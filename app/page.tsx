@@ -2,7 +2,7 @@ import ButtonSettings from "@/components/UI/ButtonSettings";
 import Date from "@/components/Date";
 import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
-import FourDaysForecast from "@/components/FourDaysForecast";
+import FourDayForecast from "@/components/FourDayForecast";
 
 export default function Home() {
   return (
@@ -14,9 +14,9 @@ export default function Home() {
         <Time />
       </div>
       <TodaysWeather />
-      <div className="my-20"></div>
+      <div className="my-16"></div>
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
-      <FourDaysForecast />
+      <FourDayForecast />
     </>
   );
 }
