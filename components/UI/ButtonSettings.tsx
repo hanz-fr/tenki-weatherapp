@@ -3,7 +3,11 @@ import React from "react";
 export default function ButtonSettings() {
   return (
     <div className="flex justify-end">
-      <button className="hover:bg-slate-200 active:bg-slate-300 transition-all ease-in-out duration-300 p-1 rounded-md">
+      <button
+        type="button"
+        className="hover:bg-slate-200 active:bg-slate-300 transition-all ease-in-out duration-300 p-1 rounded-md"
+        data-hs-overlay="#hs-vertically-centered-modal"
+      >
         <svg
           width="27"
           height="29"
