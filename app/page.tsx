@@ -4,11 +4,13 @@ import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
 import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <ButtonSettings />
+      <Link href="/api-test">API Testing Page</Link>
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">
