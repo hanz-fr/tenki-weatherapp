@@ -5,7 +5,7 @@ export default function ButtonSettings() {
     <div className="flex justify-end">
       <button
         type="button"
-        className="hover:bg-slate-200 active:bg-slate-300 transition-all ease-in-out duration-300 p-1 rounded-md"
+        className="hover:bg-gray-400 active:bg-slate-300 transition-all ease-in-out duration-300 rounded-md"
         data-hs-overlay="#hs-vertically-centered-modal"
       >
         <svg

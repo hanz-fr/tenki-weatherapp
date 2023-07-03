@@ -9,7 +9,7 @@ export default function CityList(props: {
   onItemClick: (item: {name: string, latitude: string, longitude: string}) => void;
 }) {
 
-    let className = `w-full flex justify-between cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2 `+props.listVisibility;
+    let className = `w-full text-start flex justify-between cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2 `+props.listVisibility;
 
     const buttonHandler = () => {
         props.onItemClick({
