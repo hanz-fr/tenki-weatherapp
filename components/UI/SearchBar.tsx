@@ -1,6 +1,53 @@
-import React from "react";
+"use client";
 
-export default function SearchBar() {
+import React, { useState } from "react";
+
+import { Country, State, City } from "country-state-city";
+import CityList from "./CityList";
+
+export default function SearchBar(props: {
+  onValueChange: (city: { latitude: string; longitude: string }) => void;
+}) {
+  /* State & their initial values */
+  const [searchValue, setSearchValue] = useState("");
+  const [listVisibility, setListVisibility] = useState("hidden");
+
+  /* The Cities */
+  const city = City.getAllCities();
+  const filteredCity = city.filter((city) =>
+    city.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  /* Handlers */
+  const searchHandler = (event: any) => {
+    setSearchValue(event.target.value);
+    if (event.target.value.length < 1) {
+      setListVisibility("hidden");
+    } else {
+      setListVisibility("visible");
+    }
+  };
+
+  const itemClickHandler = (city: {
+    name: string;
+    latitude: string;
+    longitude: string;
+  }) => {
+    props.onValueChange({
+      latitude: city.latitude,
+      longitude: city.longitude,
+    });
+    console.log("selected city : " + city.name);
+    setSearchValue(city.name);
+    setListVisibility("hidden");
+  };
+
+  const inputKeyHandler = (event: any) => {
+    if (event.key === "Enter") {
+      setListVisibility("hidden");
+    }
+  };
+
   return (
     <div className="w-full max-w-screen-xl mx-auto">
       <div className="flex justify-center py-2 px-3">
@@ -12,6 +59,14 @@ export default function SearchBar() {
                 id="search"
                 type="text"
                 placeholder="Search cities..."
+                onChange={searchHandler}
+                onKeyDown={inputKeyHandler}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setListVisibility("hidden");
+                  }, 150);
+                }}
+                value={searchValue}
               />
               <div className="pl-2">
                 <svg
@@ -28,32 +83,38 @@ export default function SearchBar() {
             </div>
           </div>
           {/* List of Cities */}
-          {/* <div className="mt-2 py-3 w-full text-sm absolute z-20 rounded-lg bg-white shadow-lg">
-            <div className="flex justify-start cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2">
-              <div className="flex-grow font-medium">Tighten Co.</div>
-              <div className="text-sm font-normal text-gray-500 tracking-wide">
-                Team
-              </div>
-            </div>
-            <div className="flex justify-start cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2">
-              <div className="flex-grow font-medium">Tighten Co.</div>
-              <div className="text-sm font-normal text-gray-500 tracking-wide">
-                Team
-              </div>
-            </div>
-            <div className="flex justify-start cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2">
-              <div className="flex-grow font-medium">Tighten Co.</div>
-              <div className="text-sm font-normal text-gray-500 tracking-wide">
-                Team
-              </div>
-            </div>
-            <div className="flex justify-start cursor-pointer text-gray-700 hover:text-blue-400 hover:bg-blue-100 px-5 py-2 my-2">
-              <div className="flex-grow font-medium">Tighten Co.</div>
-              <div className="text-sm font-normal text-gray-500 tracking-wide">
-                Team
-              </div>
-            </div>
-          </div> */}
+          <div
+            className={`mt-2 py-3 w-full text-sm absolute z-20 rounded-lg bg-white shadow-lg ${listVisibility}`}
+          >
+            {searchValue.length > 0
+              ? filteredCity
+                  .map((city) => (
+                    <CityList
+                      key={
+                        city.name +
+                        "-" +
+                        city.stateCode +
+                        "-" +
+                        city.countryCode
+                      }
+                      onItemClick={itemClickHandler}
+                      listVisibility={listVisibility}
+                      cityName={city.name}
+                      cityCountryCode={city.countryCode}
+                      lat={city.latitude}
+                      long={city.longitude}
+                    />
+                  ))
+                  .slice(0, 5)
+              : ""}
+            {filteredCity.length < 1 ? (
+              <p className="font-semibold text-xs md:text-base mx-3">
+                No cities found
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>

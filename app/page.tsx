@@ -4,6 +4,7 @@ import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
 import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
+import Button from "@/components/UI/Button";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Time />
       </div>
       <TodaysWeather />
+      <Button />
       <div className="my-16 lg:my-32"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast />

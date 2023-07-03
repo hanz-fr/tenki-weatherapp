@@ -1,8 +1,23 @@
+'use client';
+
+import { useState } from 'react';
 
 import SearchBar from "./SearchBar";
 import Switch from "./Switch";
 
 export default function Modal() {
+  
+  const [cityLatitude, setCityLatitude] = useState("");
+  const [cityLongitude, setCityLongitude] = useState("");
+
+  const onSearchValueChange = (city: {latitude: string, longitude: string}) => {
+    setCityLatitude(city.latitude);
+    setCityLongitude(city.longitude);
+
+    console.log(cityLatitude);
+    console.log(cityLongitude);
+  }
+
   return (
     <div
       id="hs-vertically-centered-modal"
@@ -31,16 +46,16 @@ export default function Modal() {
               </svg>
             </button>
           </div>
-          <SearchBar />
+          <SearchBar onValueChange={onSearchValueChange}/>
           <div className="my-2"></div> {/* Spacer */}
           <div className="flex flex-col gap-7 p-5 overflow-y-auto">
             <div className="flex justify-between">
                 <p className="text-[#30373E] text-sm md:text-base">Latitude</p>
-                <input className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]" type="text" />
+                <input className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]" type="text" defaultValue={cityLatitude}/>
             </div>
             <div className="flex justify-between">
                 <p className="text-[#30373E] text-sm md:text-base">Longitude</p>
-                <input className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]" type="text" />
+                <input className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]" type="text" defaultValue={cityLongitude}/>
             </div>
             <div className="flex justify-between">
                 <p className="text-[#30373E] text-sm md:text-base">Dark Mode</p>
