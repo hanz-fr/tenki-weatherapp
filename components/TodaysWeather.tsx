@@ -3,6 +3,7 @@ import React from "react";
 import getCurrentWeather from "@/app/api/getCurrentWeather";
 import getCityTime from "@/app/api/getCityTime";
 
+
 export default async function TodaysWeather(props: { onWeatherUpdate: (time: string) => void }) {
 
   /* Get current weather */

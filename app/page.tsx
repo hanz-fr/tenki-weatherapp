@@ -6,6 +6,9 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 
+import { useSelector } from 'react-redux';
+import store from "../app/store";
+
 export default function Home() {
 
   let cityTime:string="00:00";
