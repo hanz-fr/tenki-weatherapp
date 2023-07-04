@@ -7,6 +7,12 @@ import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 
 export default function Home() {
+
+  let cityTime:string="00:00";
+  const getTime = (time:string) => {
+    cityTime = time;
+  }
+
   return (
     <>
       <ButtonSettings />
@@ -15,10 +21,10 @@ export default function Home() {
       <div className="my-2"></div>
       <div className="flex justify-between">
         <Date />
-        <Time />
+        <Time time={cityTime}/>
       </div>
       {/* @ts-expect-error Async Server Component */}
-      <TodaysWeather />
+      <TodaysWeather onWeatherUpdate={getTime}/>
       <div className="my-16 lg:my-32"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast />

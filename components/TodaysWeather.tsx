@@ -3,7 +3,7 @@ import React from "react";
 import getCurrentWeather from "@/app/api/getCurrentWeather";
 import getCityTime from "@/app/api/getCityTime";
 
-export default async function TodaysWeather() {
+export default async function TodaysWeather(props: { onWeatherUpdate: (time: string) => void }) {
 
   /* Get current weather */
   const currentWeather = await getCurrentWeather();
@@ -12,7 +12,6 @@ export default async function TodaysWeather() {
   const { 
     name,
     country,
-    tz_id,
     lat,
     lon
    } = currentWeather.location;
@@ -31,11 +30,10 @@ export default async function TodaysWeather() {
     hour12: false,
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
   };
   const date = new Date(formatted);
   const time = date.toLocaleString([], options);
-  console.log(time);
+  props.onWeatherUpdate(time);
   console.log(Math.floor(Date.now() / 1000));
 
   return (
