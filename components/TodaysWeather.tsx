@@ -1,6 +1,43 @@
 import React from "react";
 
-export default function TodaysWeather() {
+import getCurrentWeather from "@/app/api/getCurrentWeather";
+import getCityTime from "@/app/api/getCityTime";
+
+export default async function TodaysWeather() {
+
+  /* Get current weather */
+  const currentWeather = await getCurrentWeather();
+
+  /* Current City Details */
+  const { 
+    name,
+    country,
+    tz_id,
+    lat,
+    lon
+   } = currentWeather.location;
+  
+  /* Current Weather Details */
+   const { 
+    temp_f,
+    temp_c,
+  } = currentWeather.current; 
+  const condition = currentWeather.current.condition.text;
+  
+  /* Get city time from given city latitude and longitude */
+  const getCurrentCityTime = await getCityTime(lat, lon);
+  const { formatted } = getCurrentCityTime;
+  const options: Intl.DateTimeFormatOptions = {
+    hour12: false,
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  const date = new Date(formatted);
+  const time = date.toLocaleString([], options);
+  console.log(time);
+  console.log(Math.floor(Date.now() / 1000));
+
   return (
     <div className="flex justify-center mt-20">
       <div className="flex flex-col">
@@ -22,15 +59,15 @@ export default function TodaysWeather() {
         <div className="my-2"></div>
 
         <div className="text-2xl font-semibold" style={{ color: "#30373E" }}>
-          63°F
+          {temp_f}°F
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          Partly Cloudy
+          {condition}
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          Jakarta, Indonesia
+          {name}, {country}
         </div>
       </div>
     </div>

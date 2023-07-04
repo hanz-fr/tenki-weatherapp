@@ -17,6 +17,7 @@ export default function Home() {
         <Date />
         <Time />
       </div>
+      {/* @ts-expect-error Async Server Component */}
       <TodaysWeather />
       <div className="my-16 lg:my-32"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
