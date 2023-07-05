@@ -18,9 +18,9 @@ export default async function TodaysWeather(props: {
   currentWeather: CurrentWeatherProps;
 }) {
   /* Get current weather */
-  const currentWeather = props.currentWeather;
+  const currentWeather = props?.currentWeather;
 
-  if (currentWeather.isLoading)
+  if (currentWeather?.isLoading)
     return (
       <div className="flex justify-center mt-20">
         <div className="flex flex-col">
@@ -57,15 +57,15 @@ export default async function TodaysWeather(props: {
         <div className="my-2"></div>
 
         <div className="text-2xl font-semibold" style={{ color: "#30373E" }}>
-          {currentWeather.temp_f}°F
+          {currentWeather?.temp_f}°F
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          {currentWeather.condition}
+          {currentWeather?.condition}
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          {currentWeather.name}, {currentWeather.country}
+          {currentWeather?.name}, {currentWeather?.country}
         </div>
       </div>
     </div>

@@ -1,10 +1,20 @@
 "use client";
-import useSWR from "swr";
+import useSWR, { preload } from "swr";
 
 import { getCityDateTimeSWR } from "./getCityDateTimeSWR";
 
-export function getCurrentWeatherSWR(city: string) {
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+// const fetcher = (url: string) => fetch(url).then((res?) => res?.json());
+
+
+export function getCurrentWeatherSWR(city?: string) {
+
+  const fetcher = async (url:string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+  
+    return data;
+  };
 
   const { data, error, isLoading, isValidating } = useSWR(`http://api.weatherapi.com/v1/current.json?key=c9e6cb3718574d2293d42758230207&q=${city}`, fetcher, { refreshInterval: 600000 });
 
