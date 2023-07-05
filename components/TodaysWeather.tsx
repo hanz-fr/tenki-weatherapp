@@ -1,20 +1,40 @@
 import React from "react";
 
 interface CurrentWeatherProps {
-  name: string,
-  country: string,
-  latitude: number,
-  longitude: number,
-  temp_f: number,
-  temp_c: number,
-  condition: string,
-  time: string,
+  name: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+  temp_f: number;
+  temp_c: number;
+  condition: string;
+  time: string;
+  isLoading: boolean;
+  isValidating: boolean;
+  error: any;
 }
 
-export default async function TodaysWeather(props: {currentWeather: CurrentWeatherProps}) {
-  
+export default async function TodaysWeather(props: {
+  currentWeather: CurrentWeatherProps;
+}) {
   /* Get current weather */
   const currentWeather = props.currentWeather;
+
+  if (currentWeather.isLoading)
+    return (
+      <div className="flex justify-center mt-20">
+        <div className="flex flex-col">
+          <div className="bg-[#C8C8C8] rounded-xl animate-pulse" style={{ width: 140, height: 112 }}></div>
+          <div className="my-1"></div>
+          <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-20 h-8"></div>
+          <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-10 h-4 my-2"></div>
+          <div className="flex gap-1">
+            <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-16 h-4"></div>
+            <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-16 h-4"></div>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <div className="flex justify-center mt-20">

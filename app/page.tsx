@@ -25,8 +25,8 @@ export default async function Home() {
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">
-        <Date date={currentWeather.dateTime.date}/>
-        <Time time={currentWeather.dateTime.time}/>
+        <Date dateTime={currentWeather.dateTime}/>
+        <Time dateTime={currentWeather.dateTime}/>
       </div>
       {/* @ts-expect-error Async Server Component */}
       <TodaysWeather currentWeather={currentWeather}/>
