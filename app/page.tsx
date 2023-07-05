@@ -1,3 +1,4 @@
+"use client";
 import ButtonSettings from "@/components/UI/ButtonSettings";
 import Date from "@/components/Date";
 import Time from "@/components/Time";
@@ -6,7 +7,7 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 
-import getCurrentWeather from "@/app/api/getCurrentWeather";
+import { getCurrentWeatherSWR } from "./api/getCurrentWeatherSWR";
 
 export default async function Home() {
 
@@ -15,7 +16,7 @@ export default async function Home() {
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = await getCurrentWeather();  
+  const currentWeather = getCurrentWeatherSWR("Melbourne");  
 
   return (
     <>
@@ -24,8 +25,8 @@ export default async function Home() {
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">
-        <Date />
-        <Time time={currentWeather.time}/>
+        <Date date={currentWeather.dateTime.date}/>
+        <Time time={currentWeather.dateTime.time}/>
       </div>
       {/* @ts-expect-error Async Server Component */}
       <TodaysWeather currentWeather={currentWeather}/>

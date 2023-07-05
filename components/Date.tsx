@@ -1,16 +1,23 @@
 import React from "react";
 
-export default function Date() {
+interface DateInterface {
+  date: string,
+  day: string,
+  month: string,
+  year: number
+}
+
+export default function Date(props: {date: DateInterface}) {
   return (
     <div className="flex flex-col">
       <div className="text-md" style={{ color: "#30373E" }}>
-        Thursday
+        {props.date.day}
       </div>
       <div className="text-3xl font-semibold" style={{ color: "#30373E" }}>
-        25 May
+        {props.date.date} {props.date.month}
       </div>
       <div className="text-md" style={{ color: "#30373E" }}>
-        2023
+        {props.date.year}
       </div>
     </div>
   );

@@ -1,28 +1,16 @@
 "use client";
-/* import { useState } from "react";
-import useSWR from "swr"; */
+import React from 'react'
 
-export default async function ApiTestPage() {
+import { getCurrentWeatherSWR } from '../api/getCurrentWeatherSWR';
 
-  /* const [city, setCity] = useState(''); */
+export default async function page() {
 
-  /* const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data, error, isLoading } = useSWR(city.length>0 ?
-    `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=${city}`: null,
-    fetcher
-  ); */
+  const data = getCurrentWeatherSWR("Jakarta");
 
-  return (
-    <div>
-      <p className="font-bold">API Test Page</p>
-      <form>
-        <input/>
-        <button type="submit">Find</button>
-      </form>
-      <div></div>
-      {/* {error && <div>Failed fetching data.</div>}
-      {isLoading && <div>Loading API data...</div>}
-      {data && <div>{JSON.stringify(data, null, 2)}</div>} */}
-    </div>
-  );
+  // render data
+  /* if (data.isLoading) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
+  if (data.isValidating) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div> */
+  /* if (data.error) return <div>An error occurred</div> */
+
+  return <div>{ JSON.stringify(data) }</div>
 }
