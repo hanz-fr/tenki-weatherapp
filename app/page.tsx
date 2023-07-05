@@ -6,15 +6,16 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 
-import { useSelector } from 'react-redux';
-import store from "../app/store";
+import getCurrentWeather from "@/app/api/getCurrentWeather";
 
-export default function Home() {
+export default async function Home() {
 
-  let cityTime:string="00:00";
-  const getTime = (time:string) => {
-    cityTime = time;
-  }
+  /* 
+  Get the current weather in here.
+  So all the properties can be 
+  passed down to child components.
+  */
+  const currentWeather = await getCurrentWeather();  
 
   return (
     <>
@@ -24,10 +25,10 @@ export default function Home() {
       <div className="my-2"></div>
       <div className="flex justify-between">
         <Date />
-        <Time time={cityTime}/>
+        <Time time={currentWeather.time}/>
       </div>
       {/* @ts-expect-error Async Server Component */}
-      <TodaysWeather onWeatherUpdate={getTime}/>
+      <TodaysWeather currentWeather={currentWeather}/>
       <div className="my-16 lg:my-32"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast />

@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
+import { GlobalTimeContextProvider } from "@/context/TimeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    import('preline' as any)
-  }, [])
+    import("preline" as any);
+  }, []);
   return (
     <html lang="en">
       <body className={inter.className}>

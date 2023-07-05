@@ -1,41 +1,20 @@
 import React from "react";
 
-import getCurrentWeather from "@/app/api/getCurrentWeather";
-import getCityTime from "@/app/api/getCityTime";
+interface CurrentWeatherProps {
+  name: string,
+  country: string,
+  latitude: number,
+  longitude: number,
+  temp_f: number,
+  temp_c: number,
+  condition: string,
+  time: string,
+}
 
-
-export default async function TodaysWeather(props: { onWeatherUpdate: (time: string) => void }) {
-
+export default async function TodaysWeather(props: {currentWeather: CurrentWeatherProps}) {
+  
   /* Get current weather */
-  const currentWeather = await getCurrentWeather();
-
-  /* Current City Details */
-  const { 
-    name,
-    country,
-    lat,
-    lon
-   } = currentWeather.location;
-  
-  /* Current Weather Details */
-   const { 
-    temp_f,
-    temp_c,
-  } = currentWeather.current; 
-  const condition = currentWeather.current.condition.text;
-  
-  /* Get city time from given city latitude and longitude */
-  const getCurrentCityTime = await getCityTime(lat, lon);
-  const { formatted } = getCurrentCityTime;
-  const options: Intl.DateTimeFormatOptions = {
-    hour12: false,
-    hour: "numeric",
-    minute: "numeric",
-  };
-  const date = new Date(formatted);
-  const time = date.toLocaleString([], options);
-  props.onWeatherUpdate(time);
-  console.log(Math.floor(Date.now() / 1000));
+  const currentWeather = props.currentWeather;
 
   return (
     <div className="flex justify-center mt-20">
@@ -58,15 +37,15 @@ export default async function TodaysWeather(props: { onWeatherUpdate: (time: str
         <div className="my-2"></div>
 
         <div className="text-2xl font-semibold" style={{ color: "#30373E" }}>
-          {temp_f}°F
+          {currentWeather.temp_f}°F
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          {condition}
+          {currentWeather.condition}
         </div>
 
         <div className="text-lg" style={{ color: "#30373E" }}>
-          {name}, {country}
+          {currentWeather.name}, {currentWeather.country}
         </div>
       </div>
     </div>
