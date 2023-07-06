@@ -3,18 +3,11 @@ import useSWR, { preload } from "swr";
 
 import { getCityDateTimeSWR } from "./getCityDateTimeSWR";
 
+import axios from 'axios';
+ 
+const fetcher = (url:string) => axios.get(url).then(res => res.data);
 
-// const fetcher = (url: string) => fetch(url).then((res?) => res?.json());
-
-
-export function getCurrentWeatherSWR(city?: string) {
-
-  const fetcher = async (url:string) => {
-    const response = await fetch(url);
-    const data = await response.json();
-  
-    return data;
-  };
+export function getCurrentWeatherSWR(city: string) {
 
   const { data, error, isLoading, isValidating } = useSWR(`http://api.weatherapi.com/v1/current.json?key=c9e6cb3718574d2293d42758230207&q=${city}`, fetcher, { refreshInterval: 600000 });
 

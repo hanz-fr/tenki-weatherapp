@@ -9,14 +9,15 @@ import Link from "next/link";
 
 import { getCurrentWeatherSWR } from "./api/getCurrentWeatherSWR";
 
-export default async function Home() {
-
+export default function Home() {
   /* 
   Get the current weather in here.
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = getCurrentWeatherSWR("Melbourne");  
+  const currentWeather = getCurrentWeatherSWR("");
+
+  if (currentWeather.error) return <div>ERROR</div>
 
   return (
     <>
@@ -25,11 +26,11 @@ export default async function Home() {
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">
-        <Date dateTime={currentWeather.dateTime}/>
-        <Time dateTime={currentWeather.dateTime}/>
+        <Date dateTime={currentWeather.dateTime} />
+        <Time dateTime={currentWeather.dateTime} />
       </div>
       {/* @ts-expect-error Async Server Component */}
-      <TodaysWeather currentWeather={currentWeather}/>
+      <TodaysWeather currentWeather={currentWeather} />
       <div className="my-16 lg:my-32"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast />

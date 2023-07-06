@@ -2,7 +2,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
-import { GlobalTimeContextProvider } from "@/context/TimeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,9 +1,11 @@
 "use client";
-import useSWR  from 'swr'
+import useSWR  from 'swr';
+
+import axios from 'axios';
 
 export function getCityDateTimeSWR(lat:number, lon:number) {
 
-  const fetcher = (url:string) => fetch(url).then(res => res.json())
+  const fetcher = (url:string) => axios.get(url).then(res => res.data);
 
   const { data, error, isLoading, isValidating } = useSWR(`https://api.timezonedb.com/v2.1/get-time-zone?key=FPV7HVHK9PC5&format=json&by=position&lat=${lat}&lng=${lon}`, fetcher, { refreshInterval: 60000 })
 
