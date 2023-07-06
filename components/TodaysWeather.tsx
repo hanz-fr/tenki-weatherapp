@@ -40,6 +40,7 @@ export default async function TodaysWeather(props: {
     <div className="flex justify-center mt-20">
       <div className="flex flex-col">
         <svg
+          className="mx-auto"
           width="137"
           height="112"
           viewBox="0 0 137 112"
@@ -56,15 +57,15 @@ export default async function TodaysWeather(props: {
 
         <div className="my-2"></div>
 
-        <div className="text-2xl font-semibold" style={{ color: "#30373E" }}>
+        <div className="text-2xl lg:text-5xl font-bold lg:text-center" style={{ color: "#30373E" }}>
           {currentWeather?.temp_f}°F
         </div>
 
-        <div className="text-lg" style={{ color: "#30373E" }}>
+        <div className="text-lg lg:text-2xl lg:mt-2 lg:text-center font-semibold" style={{ color: "#30373E" }}>
           {currentWeather?.condition}
         </div>
 
-        <div className="text-lg" style={{ color: "#30373E" }}>
+        <div className="text-lg w-36 lg:w-full" style={{ color: "#30373E" }}>
           {currentWeather?.name}, {currentWeather?.country}
         </div>
       </div>

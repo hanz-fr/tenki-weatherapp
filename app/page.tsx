@@ -6,6 +6,7 @@ import TodaysWeather from "@/components/TodaysWeather";
 import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
+import CityNotFound from "@/components/Error/CityNotFound";
 
 import { getCurrentWeatherSWR } from "./api/getCurrentWeatherSWR";
 
@@ -15,9 +16,9 @@ export default function Home() {
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = getCurrentWeatherSWR("");
+  const currentWeather = getCurrentWeatherSWR("Abu Dhabi");
 
-  if (currentWeather.error) return <div>ERROR</div>
+  if (currentWeather.error) return <CityNotFound/>
 
   return (
     <>
