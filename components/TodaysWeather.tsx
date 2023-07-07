@@ -1,5 +1,6 @@
 import React from "react";
 
+
 interface CurrentWeatherProps {
   name: string;
   country: string;
@@ -57,15 +58,15 @@ export default async function TodaysWeather(props: {
 
         <div className="my-2"></div>
 
-        <div className="text-2xl lg:text-5xl font-bold lg:text-center" style={{ color: "#30373E" }}>
+        <div className="text-2xl lg:text-5xl font-bold text-center" style={{ color: "#30373E" }}>
           {currentWeather?.temp_f}°F
         </div>
 
-        <div className="text-lg lg:text-2xl lg:mt-2 lg:text-center font-semibold" style={{ color: "#30373E" }}>
+        <div className="text-lg w-full lg:text-2xl lg:mt-2 text-center font-semibold" style={{ color: "#30373E" }}>
           {currentWeather?.condition}
         </div>
 
-        <div className="text-lg w-36 lg:w-full" style={{ color: "#30373E" }}>
+        <div className="text-lg w-36 lg:w-full text-center" style={{ color: "#30373E" }}>
           {currentWeather?.name}, {currentWeather?.country}
         </div>
       </div>

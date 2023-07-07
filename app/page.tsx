@@ -7,6 +7,7 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 import CityNotFound from "@/components/Error/CityNotFound";
+import ConditionDetails from "@/components/UI/ConditionDetails";
 
 import { getCurrentWeatherSWR } from "./api/getCurrentWeatherSWR";
 
@@ -16,9 +17,9 @@ export default function Home() {
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = getCurrentWeatherSWR("Abu Dhabi");
+  const currentWeather = getCurrentWeatherSWR("25.14479000,56.24764000");
 
-  if (currentWeather.error) return <CityNotFound/>
+  if (currentWeather.error) return <CityNotFound />;
 
   return (
     <>
@@ -32,7 +33,9 @@ export default function Home() {
       </div>
       {/* @ts-expect-error Async Server Component */}
       <TodaysWeather currentWeather={currentWeather} />
-      <div className="my-16 lg:my-32"></div> {/* spacer */}
+      <div className="my-8 lg:my-5"></div> {/* spacer */}
+      <ConditionDetails details={currentWeather.conditionDetails} />
+      <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast />
     </>
