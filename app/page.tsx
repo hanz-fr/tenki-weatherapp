@@ -17,7 +17,7 @@ export default function Home() {
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = getCurrentWeatherSWR("25.14479000,56.24764000");
+  const currentWeather = getCurrentWeatherSWR("Tokyo");
 
   if (currentWeather.error) return <CityNotFound />;
 
@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       {/* @ts-expect-error Async Server Component */}
       <TodaysWeather currentWeather={currentWeather} />
-      <div className="my-8 lg:my-5"></div> {/* spacer */}
+      <div className="my-8 lg:my-20"></div> {/* spacer */}
       <ConditionDetails details={currentWeather.conditionDetails} />
       <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>

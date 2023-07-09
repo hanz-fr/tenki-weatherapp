@@ -42,12 +42,21 @@ const DayForecast: React.FC<{ day: string; date: string; weather: string }> = (
           height={35}
         />
       )}
+      {(props.weather != "Cloudy" ||
+        "Thunder" ||
+        "Rainy" ||
+        "Sunny") && (
+          <Image
+            className="mx-auto"
+            src="/assets/svg/weather_sunny.svg"
+            alt="weather_sunny"
+            width={34}
+            height={34}
+          />
+        )}
 
       <div className="mx-auto text-center">
-        <div
-          className="text-lg font-medium"
-          style={{ color: "#30373E" }}
-        >
+        <div className="text-lg font-medium" style={{ color: "#30373E" }}>
           {props.day}
         </div>
 

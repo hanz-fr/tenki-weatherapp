@@ -11,7 +11,7 @@ interface ConditionDetailsProps {
 
 export default function ConditionDetails(props: {details: ConditionDetailsProps}) {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between md:justify-evenly">
         {/* Wind */}
         <div className="flex flex-col my-auto">
           <div className="flex gap-2">
@@ -22,8 +22,9 @@ export default function ConditionDetails(props: {details: ConditionDetailsProps}
               alt={"wind"}
             ></Image>
             <div className="flex flex-col">
-              <div className="mx-auto font-bold text-[#30373E]">{props.details.wind_dir}</div>
+              <div className="mx-auto font-bold text-[#30373E] text-sm">{props.details.wind_dir}</div>
               <Image
+                className="mx-auto"
                 src={"/assets/svg/arrow.svg"}
                 width={20}
                 height={20}
@@ -38,14 +39,14 @@ export default function ConditionDetails(props: {details: ConditionDetailsProps}
         <div className="flex flex-col my-auto">
           <div className="flex gap-2">
             <Image src={"/assets/svg/humid.svg"} width={25} height={25} alt={"humidity"}></Image>
-            <div className="text-lg text-[#30373E] font-bold my-auto">{props.details.humidity}</div>
+            <div className="text-lg text-[#30373E] font-bold my-auto">{props.details.humidity}%</div>
           </div>
           <div className="text-center mt-4 text-base text-[#30373E]">humidity</div>
         </div>
 
         {/* Air Pressure */}
         <div className="flex flex-col my-auto">
-          <div className="flex mt-[2px]">
+          <div className="flex mt-[3.3px]">
             <Image src={"/assets/svg/pressure_arrow.svg"} alt={"air_pressure"} width={15} height={15}></Image>
             <div className="text-lg text-[#30373E] font-bold my-auto">
             {props.details.pressure_mb}mb
