@@ -2,13 +2,31 @@ import React from "react";
 
 import DayForecast from "./UI/DayForecast";
 
-export default function FourDaysForecast() {
+interface ForecastProps {
+  date: string,
+  day: {
+    condition: {
+      text: string
+    }
+  }
+}
+
+const weekday = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+
+export default function FourDaysForecast(props: { forecast: ForecastProps[]}) {
   return (
     <div className="flex justify-between lg:justify-evenly mt-10">
-      <DayForecast day={"Fri"} date={"26/05"} weather={"Sunny"}/>
-      <DayForecast day={"Sat"} date={"27/05"} weather={"Cloudy"}/>
-      <DayForecast day={"Sun"} date={"28/05"} weather={"Thunder"}/>
-      <DayForecast day={"Mon"} date={"29/05"} weather={"Sunny"}/>
+      {props.forecast?.map((forecast) => (
+        <DayForecast date={forecast.date}  day={weekday[new Date(forecast.date).getDay()]} weather={forecast.day.condition.text}/>
+      )).slice(1)}
     </div>
   );
 }

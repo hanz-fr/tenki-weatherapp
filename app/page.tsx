@@ -37,7 +37,7 @@ export default function Home() {
       <ConditionDetails details={currentWeather.conditionDetails} />
       <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
-      <FourDayForecast />
+      <FourDayForecast forecast={currentWeather.forecast}/>
     </>
   );
 }

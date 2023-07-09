@@ -8,7 +8,7 @@ const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export function getCurrentWeatherSWR(city: string) {
   const { data, error, isLoading, isValidating } = useSWR(
-    `http://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${city}&days=10&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${city}&days=5&aqi=no&alerts=no`,
     fetcher,
     { refreshInterval: 600000 }
   );
@@ -29,6 +29,9 @@ export function getCurrentWeatherSWR(city: string) {
   const humidity = data?.current.humidity;
   const wind_kph = data?.current.wind_kph;
   const wind_dir = data?.current.wind_dir;
+
+  /* Forecast */
+  const forecast = data?.forecast.forecastday;
 
   const cityDateTime = getCityDateTimeSWR(latitude, longitude);
 
@@ -57,6 +60,7 @@ export function getCurrentWeatherSWR(city: string) {
       wind_kph,
       wind_dir,
     },
+    forecast,
   };
 
   return currentCityWeather;

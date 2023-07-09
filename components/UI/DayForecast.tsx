@@ -4,6 +4,10 @@ import Image from "next/image";
 const DayForecast: React.FC<{ day: string; date: string; weather: string }> = (
   props
 ) => {
+
+  const date = ("0" + new Date(props.date).getDate()).slice(-2);
+  const month = ("0" + (new Date(props.date).getMonth() + 1)).slice(-2);
+
   return (
     <div className="flex flex-col gap-3">
       {props.weather == "Sunny" && (
@@ -60,7 +64,7 @@ const DayForecast: React.FC<{ day: string; date: string; weather: string }> = (
           {props.day}
         </div>
 
-        <div className="mx-auto text-sm">{props.date}</div>
+        <div className="mx-auto text-sm">{date}/{month}</div>
       </div>
     </div>
   );
