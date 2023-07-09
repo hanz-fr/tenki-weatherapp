@@ -38,6 +38,7 @@ export default function Home() {
       <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast forecast={currentWeather.forecast}/>
+      <Link href="/forecast" className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1">view all</Link>
     </>
   );
 }
