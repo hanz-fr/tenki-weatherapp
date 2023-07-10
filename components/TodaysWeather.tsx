@@ -66,7 +66,7 @@ export default async function TodaysWeather(props: {
           {currentWeather?.condition}
         </div>
 
-        <div className="text-lg w-36 lg:w-full text-center" style={{ color: "#30373E" }}>
+        <div className="text-lg w-full lg:w-full text-center" style={{ color: "#30373E" }}>
           {currentWeather?.name}, {currentWeather?.country}
         </div>
       </div>

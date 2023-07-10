@@ -46,7 +46,7 @@ const DayForecast: React.FC<{ day: string; date: string; weather: string }> = (
           height={35}
         />
       )}
-      {(props.weather != "Cloudy" ||
+      {/* {(props.weather != "Cloudy" ||
         "Thunder" ||
         "Rainy" ||
         "Sunny") && (
@@ -57,7 +57,7 @@ const DayForecast: React.FC<{ day: string; date: string; weather: string }> = (
             width={34}
             height={34}
           />
-        )}
+        )} */}
 
       <div className="mx-auto text-center">
         <div className="text-lg font-medium" style={{ color: "#30373E" }}>

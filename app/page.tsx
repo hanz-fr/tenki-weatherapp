@@ -17,7 +17,11 @@ export default function Home() {
   So all the properties can be 
   passed down to child components.
   */
-  const currentWeather = getCurrentWeatherSWR("Tokyo");
+
+  const lat = '35.68950000';
+  const lon = '139.69';
+
+  const currentWeather = getCurrentWeatherSWR(`${lat},${lon}`);
 
   if (currentWeather.error) return <CityNotFound />;
 
@@ -38,7 +42,13 @@ export default function Home() {
       <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
       <FourDayForecast forecast={currentWeather.forecast}/>
-      <Link href="/forecast" className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1">view all</Link>
+      <Link href={{ 
+        pathname: "/forecast",
+        query: {
+          lat,
+          lon
+        }
+      }} className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1">view all</Link>
     </>
   );
 }
