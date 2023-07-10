@@ -54,7 +54,7 @@ export default function DayForecastCard(props: ForecastProps) {
             alt="chevron"
             className="mx-auto"
           />
-          <div className="text-[#30373E] font-bold mx-auto">{props.temp}°C</div>
+          <div className="text-[#30373E] font-bold mx-auto text-sm md:text-lg">{props.temp}°C</div>
         </div>
         <div className="basis-2/3 md:basis-3/4 xl:basis-5/6 flex flex-col">
           <div className="text-[#30373E] text-md font-bold">{props.condition}</div>

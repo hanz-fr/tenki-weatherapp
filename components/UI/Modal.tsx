@@ -26,6 +26,14 @@ export default function Modal() {
     setCityLongitude(cityLonInput);
   }
 
+  const onLatInputChange = (event:any) => {
+    setCityLatInput(event.target.value);
+  }
+
+  const onLonInputChange = (event:any) => {
+    setCityLonInput(event.target.value);
+  }
+
   return (
     <div
       id="hs-vertically-centered-modal"
@@ -65,6 +73,7 @@ export default function Modal() {
                   type="text"
                   value={cityLatInput}
                   required
+                  onChange={onLatInputChange}
                 />
               </div>
               <div className="flex justify-between">
@@ -74,6 +83,7 @@ export default function Modal() {
                   type="text"
                   value={cityLonInput}
                   required
+                  onChange={onLonInputChange}
                 />
               </div>
               <div className="flex justify-between">

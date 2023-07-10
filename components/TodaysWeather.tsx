@@ -59,7 +59,7 @@ export default async function TodaysWeather(props: {
         <div className="my-2"></div>
 
         <div className="text-2xl lg:text-5xl font-bold text-center" style={{ color: "#30373E" }}>
-          {currentWeather?.temp_f}°F
+          {currentWeather?.temp_c}°C
         </div>
 
         <div className="text-lg w-full lg:text-2xl lg:mt-2 text-center font-semibold" style={{ color: "#30373E" }}>

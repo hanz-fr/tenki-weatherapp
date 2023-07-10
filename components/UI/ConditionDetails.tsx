@@ -17,8 +17,8 @@ export default function ConditionDetails(props: {details: ConditionDetailsProps}
           <div className="flex gap-2">
             <Image
               src={"/assets/svg/wind.svg"}
-              width={50}
-              height={50}
+              width={35}
+              height={35}
               alt={"wind"}
             ></Image>
             <div className="flex flex-col">
@@ -26,8 +26,8 @@ export default function ConditionDetails(props: {details: ConditionDetailsProps}
               <Image
                 className="mx-auto"
                 src={"/assets/svg/arrow.svg"}
-                width={20}
-                height={20}
+                width={15}
+                height={15}
                 alt={"wind"}
               ></Image>
             </div>
@@ -38,7 +38,7 @@ export default function ConditionDetails(props: {details: ConditionDetailsProps}
         {/* Humidity */}
         <div className="flex flex-col my-auto">
           <div className="flex gap-2">
-            <Image src={"/assets/svg/humid.svg"} width={25} height={25} alt={"humidity"}></Image>
+            <Image src={"/assets/svg/humid.svg"} width={15} height={15} alt={"humidity"}></Image>
             <div className="text-lg text-[#30373E] font-bold my-auto">{props.details.humidity}%</div>
           </div>
           <div className="text-center mt-4 text-base text-[#30373E]">humidity</div>
