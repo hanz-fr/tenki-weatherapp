@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 
-import { Country, State, City } from "country-state-city";
+import { City } from "country-state-city";
 import CityList from "./CityList";
 
 export default function SearchBar(props: {
-  onValueChange: (city: { latitude: string; longitude: string }) => void;
+  onValueChange: (city: { latitude: number; longitude: number }) => void;
 }) {
   /* State & their initial values */
   const [searchValue, setSearchValue] = useState("");
@@ -34,10 +34,12 @@ export default function SearchBar(props: {
     longitude: string;
   }) => {
     props.onValueChange({
-      latitude: city.latitude,
-      longitude: city.longitude,
+      latitude: parseFloat(city.latitude),
+      longitude: parseFloat(city.longitude),
     });
     console.log("selected city : " + city.name);
+    console.log("city lat : "+parseFloat(city.latitude));
+    console.log("city lon : "+parseFloat(city.longitude));
     setSearchValue(city.name);
     setListVisibility("hidden");
   };

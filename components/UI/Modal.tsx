@@ -1,24 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 
 import SearchBar from "./SearchBar";
 import Switch from "./Switch";
+import { useCityContext } from "@/context/CityContext";
 
 export default function Modal() {
-  const [cityLatitude, setCityLatitude] = useState("");
-  const [cityLongitude, setCityLongitude] = useState("");
+  const { latitude, longitude, setCityLatitude, setCityLongitude } = useCityContext();
+  const [cityLatInput, setCityLatInput] = useState(latitude);
+  const [cityLonInput, setCityLonInput] = useState(longitude);
 
   const onSearchValueChange = (city: {
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
   }) => {
-    setCityLatitude(city.latitude);
-    setCityLongitude(city.longitude);
-
-    console.log(cityLatitude);
-    console.log(cityLongitude);
+    setCityLatInput(city.latitude);
+    setCityLonInput(city.longitude);
   };
+
+  const submitHandler = (event:any) => {
+    event.preventDefault();
+
+    setCityLatitude(cityLatInput);
+    setCityLongitude(cityLonInput);
+  }
 
   return (
     <div
@@ -50,38 +56,42 @@ export default function Modal() {
           </div>
           <SearchBar onValueChange={onSearchValueChange} />
           <div className="my-2"></div> {/* Spacer */}
-          <div className="flex flex-col gap-7 p-5 overflow-y-auto">
-            <div className="flex justify-between">
-              <p className="text-[#30373E] text-sm md:text-base">Latitude</p>
-              <input
-                className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]"
-                type="text"
-                defaultValue={cityLatitude}
-              />
+          <form onSubmit={submitHandler}>
+            <div className="flex flex-col gap-7 p-5 overflow-y-auto">
+              <div className="flex justify-between">
+                <p className="text-[#30373E] text-sm md:text-base">Latitude</p>
+                <input
+                  className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]"
+                  type="text"
+                  value={cityLatInput}
+                  required
+                />
+              </div>
+              <div className="flex justify-between">
+                <p className="text-[#30373E] text-sm md:text-base">Longitude</p>
+                <input
+                  className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]"
+                  type="text"
+                  value={cityLonInput}
+                  required
+                />
+              </div>
+              <div className="flex justify-between">
+                <p className="text-[#30373E] text-sm md:text-base">Dark Mode</p>
+                <Switch />
+              </div>
             </div>
-            <div className="flex justify-between">
-              <p className="text-[#30373E] text-sm md:text-base">Longitude</p>
-              <input
-                className="w-1/4 text-sm md:text-base text-[#30373E] transition-colors duration-200 bg-transparent border-b-2 border-b-[#30373E] focus:outline-none focus:border-b-[#5891CA]"
-                type="text"
-                defaultValue={cityLongitude}
-              />
+            <div className="my-2"></div> {/* Spacer */}
+            <div className="flex justify-center items-center gap-x-2 py-3 px-4">
+              <button
+                type="submit"
+                className="hs-dropdown-toggle py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
+                data-hs-overlay="#hs-vertically-centered-modal"
+              >
+                Save Changes
+              </button>
             </div>
-            <div className="flex justify-between">
-              <p className="text-[#30373E] text-sm md:text-base">Dark Mode</p>
-              <Switch />
-            </div>
-          </div>
-          <div className="my-2"></div> {/* Spacer */}
-          <div className="flex justify-center items-center gap-x-2 py-3 px-4">
-            <button
-              type="button"
-              className="hs-dropdown-toggle py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
-              data-hs-overlay="#hs-vertically-centered-modal"
-            >
-              Save Changes
-            </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

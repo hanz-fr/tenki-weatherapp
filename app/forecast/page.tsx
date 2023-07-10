@@ -5,9 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DayForecastCard from "@/components/UI/DayForecastCard";
 
-import { useSearchParams } from 'next/navigation';
-import { ParsedUrlQuery } from "querystring";
-import { GetServerSideProps } from "next";
+import { useCityContext } from "@/context/CityContext";
 
 interface ForecastProps {
   date: string;
@@ -19,15 +17,12 @@ interface ForecastProps {
   };
 }
 
-
 export default async function ForecastPage() {
-  const searchParams =  useSearchParams();
 
-  const lat = searchParams.get("lat");
-  const lon = searchParams.get("lon");
+  const { latitude, longitude } = useCityContext();
 
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${lat},${lon}&days=11&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${latitude},${longitude}&days=11&aqi=no&alerts=no`,
     { cache: "no-store" }
   );
 
@@ -37,7 +32,7 @@ export default async function ForecastPage() {
   return (
     <div>
       <div className="flex flex-col">
-        <div className="flex justify-between">
+        <div className="flex justify-between my-5 xl:my-10">
           <Link href="/">
             <Image
               className="my-auto"
@@ -47,7 +42,7 @@ export default async function ForecastPage() {
               alt="chevron"
             />
           </Link>
-          <div className="text-[#30373E]">Forecasts</div>
+          <div className="text-[#30373E] font-semibold xl:text-xl">Forecasts</div>
           <div></div>
         </div>
         <div className="flex flex-col">
@@ -60,6 +55,7 @@ export default async function ForecastPage() {
               />
             ))
             .slice(1)}
+          <div className="my-10"></div>
         </div>
       </div>
     </div>

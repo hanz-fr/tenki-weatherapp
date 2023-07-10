@@ -10,18 +10,17 @@ import CityNotFound from "@/components/Error/CityNotFound";
 import ConditionDetails from "@/components/UI/ConditionDetails";
 
 import { getCurrentWeatherSWR } from "./api/getCurrentWeatherSWR";
+import { useCityContext } from "@/context/CityContext";
 
 export default function Home() {
+  const { latitude, longitude } =
+    useCityContext();
   /* 
   Get the current weather in here.
   So all the properties can be 
   passed down to child components.
   */
-
-  const lat = '35.68950000';
-  const lon = '139.69';
-
-  const currentWeather = getCurrentWeatherSWR(`${lat},${lon}`);
+  const currentWeather = getCurrentWeatherSWR(`${latitude},${longitude}`);
 
   if (currentWeather.error) return <CityNotFound />;
 
@@ -41,14 +40,15 @@ export default function Home() {
       <ConditionDetails details={currentWeather.conditionDetails} />
       <div className="my-2 lg:my-5"></div> {/* spacer */}
       <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
-      <FourDayForecast forecast={currentWeather.forecast}/>
-      <Link href={{ 
-        pathname: "/forecast",
-        query: {
-          lat,
-          lon
-        }
-      }} className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1">view all</Link>
+      <FourDayForecast forecast={currentWeather.forecast} />
+      <Link
+        href={{
+          pathname: "/forecast",
+        }}
+        className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1"
+      >
+        view all
+      </Link>
     </>
   );
 }
