@@ -27,7 +27,6 @@ export default function Home() {
   return (
     <>
       <ButtonSettings />
-      <Link href="/api-test">API Testing Page</Link>
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">
@@ -45,7 +44,7 @@ export default function Home() {
         href={{
           pathname: "/forecast",
         }}
-        className="text-[#30373E] my-10 flex mx-auto underline underline-offset-1"
+        className="text-[#30373E] hover:text-[#637280] transition-all my-10 flex mx-auto underline underline-offset-1"
       >
         view all
       </Link>

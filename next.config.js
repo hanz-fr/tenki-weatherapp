@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.weatherapi.com",
       },
+      {
+        protocol: "https",
+        hostname: "img.icons8.com",
+      },
     ],
   },
 };

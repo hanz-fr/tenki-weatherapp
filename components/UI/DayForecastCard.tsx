@@ -5,6 +5,7 @@ import Image from "next/image";
 interface ForecastProps {
   temp: number;
   condition: string;
+  code: number;
   date: string;
 }
 
@@ -48,7 +49,7 @@ export default function DayForecastCard(props: ForecastProps) {
       <div className="flex flex-row xl:px-5">
         <div className="basis-1/3 md:basis-1/4 xl:basis-1/6 flex flex-col">
           <Image
-            src="/assets/svg/weather_sunny.svg"
+            src={`/assets/svg/weather/day_${props?.code}.svg`}
             width={30}
             height={30}
             alt="chevron"
@@ -56,7 +57,7 @@ export default function DayForecastCard(props: ForecastProps) {
           />
           <div className="text-[#30373E] font-bold mx-auto text-sm md:text-lg">{props.temp}°C</div>
         </div>
-        <div className="basis-2/3 md:basis-3/4 xl:basis-5/6 flex flex-col">
+        <div className="basis-2/3 md:basis-3/4 xl:basis-5/6 flex flex-col my-auto">
           <div className="text-[#30373E] text-md font-bold">{props.condition}</div>
           <div className="text-[#30373E] text-sm">{day}, {date} {month} {year}</div>
         </div>

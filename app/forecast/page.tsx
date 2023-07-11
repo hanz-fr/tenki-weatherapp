@@ -13,12 +13,12 @@ interface ForecastProps {
     avgtemp_c: number;
     condition: {
       text: string;
+      code: number;
     };
   };
 }
 
 export default async function ForecastPage() {
-
   const { latitude, longitude } = useCityContext();
 
   const res = await fetch(
@@ -27,31 +27,35 @@ export default async function ForecastPage() {
   );
 
   const weatherData = await res.json();
-  const { forecastday } = weatherData.forecast;
+  const { forecastday } = weatherData?.forecast;
 
   return (
     <div>
       <div className="flex flex-col">
         <div className="flex justify-between my-5 xl:my-10">
           <Link href="/">
-            <Image
-              className="my-auto"
-              src="/assets/svg/chevron_left.svg"
-              width={12}
-              height={12}
-              alt="chevron"
-            />
+            <div className="p-3 rounded-lg hover:bg-gray-400 transition-all">
+              <Image
+                src={"/assets/svg/chevron_left.svg"}
+                width={10}
+                height={10}
+                alt={"chevron"}
+              />
+            </div>
           </Link>
-          <div className="text-[#30373E] font-semibold xl:text-xl">Forecasts</div>
+          <div className="text-[#30373E] font-semibold xl:text-xl my-auto">
+            Forecasts
+          </div>
           <div></div>
         </div>
         <div className="flex flex-col">
           {forecastday
             .map((forecast: ForecastProps) => (
               <DayForecastCard
-                temp={forecast.day.avgtemp_c}
-                date={forecast.date}
-                condition={forecast.day.condition.text}
+                temp={forecast?.day.avgtemp_c}
+                date={forecast?.date}
+                condition={forecast?.day.condition.text}
+                code={forecast?.day.condition.code}
               />
             ))
             .slice(1)}
