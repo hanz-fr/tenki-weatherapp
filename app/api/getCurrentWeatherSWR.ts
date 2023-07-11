@@ -23,6 +23,7 @@ export function getCurrentWeatherSWR(city: string) {
   const temp_f = data?.current.temp_f;
   const temp_c = data?.current.temp_c;
   const condition = data?.current.condition.text;
+  const condition_icon = data?.current.condition.icon;
 
   /* Condition Details */
   const pressure_mb = data?.current.pressure_mb;
@@ -44,6 +45,7 @@ export function getCurrentWeatherSWR(city: string) {
     temp_f,
     temp_c,
     condition,
+    condition_icon,
     isLoading,
     isValidating,
     error,
