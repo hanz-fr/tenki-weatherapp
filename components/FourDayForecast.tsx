@@ -6,7 +6,7 @@ interface ForecastProps {
   date: string;
   day: {
     condition: {
-      text: string;
+      code: number;
     };
   };
 }
@@ -21,7 +21,7 @@ export default function FourDaysForecast(props: { forecast: ForecastProps[] }) {
           <DayForecast
             date={forecast.date}
             day={weekday[new Date(forecast.date).getDay()]}
-            weather={forecast.day.condition.text}
+            code={forecast.day.condition.code}
           />
         ))
         .slice(1)}

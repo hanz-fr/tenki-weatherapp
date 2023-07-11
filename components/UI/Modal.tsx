@@ -15,6 +15,8 @@ export default function Modal() {
     latitude: number;
     longitude: number;
   }) => {
+    console.log(city.latitude);
+    console.log(city.longitude);
     setCityLatInput(city.latitude);
     setCityLonInput(city.longitude);
   };
