@@ -9,7 +9,7 @@ const DayForecast: React.FC<{ day: string; date: string; code: number }> = (
   const month = ("0" + (new Date(props.date).getMonth() + 1)).slice(-2);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="grid grid-cols-1 gap-3 content-between">
       <Image
         className="mx-auto"
         src={`/assets/svg/weather/day_${props.code}.svg`}
