@@ -1,5 +1,5 @@
 "use client";
-import ButtonSettings from "@/components/UI/ButtonSettings";
+import ButtonLocation from "@/components/UI/ButtonLocation";
 import Date from "@/components/Date";
 import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <>
-      <ButtonSettings />
+      <ButtonLocation />
       <Modal />
       <div className="my-2"></div>
       <div className="flex justify-between">

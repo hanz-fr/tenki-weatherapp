@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ButtonSettings from "../UI/ButtonSettings";
+import ButtonSettings from "../UI/ButtonLocation";
 import Modal from "../UI/Modal";
 import Date from "../Date";
 import Time from "../Time";
