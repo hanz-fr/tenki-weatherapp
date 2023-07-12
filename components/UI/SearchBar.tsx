@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { City } from "country-state-city";
 import CityList from "./CityList";
@@ -28,6 +28,17 @@ export default function SearchBar(props: {
     }
   };
 
+  const handleOutsideClick = (event: any) => {
+    setListVisibility("hidden");
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   const itemClickHandler = (city: {
     name: string;
     latitude: string;
@@ -38,8 +49,8 @@ export default function SearchBar(props: {
       longitude: parseFloat(city.longitude),
     });
     console.log("selected city : " + city.name);
-    console.log("city lat : "+parseFloat(city.latitude));
-    console.log("city lon : "+parseFloat(city.longitude));
+    console.log("city lat : " + parseFloat(city.latitude));
+    console.log("city lon : " + parseFloat(city.longitude));
     setSearchValue(city.name);
     setListVisibility("hidden");
   };
@@ -63,11 +74,6 @@ export default function SearchBar(props: {
                 placeholder="Search cities..."
                 onChange={searchHandler}
                 onKeyDown={inputKeyHandler}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setListVisibility("hidden");
-                  }, 150);
-                }}
                 value={searchValue}
               />
               <div className="pl-2">
