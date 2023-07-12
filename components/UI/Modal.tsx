@@ -88,10 +88,6 @@ export default function Modal() {
                   onChange={onLonInputChange}
                 />
               </div>
-              <div className="flex justify-between">
-                <p className="text-[#30373E] text-sm md:text-base">Dark Mode</p>
-                <Switch />
-              </div>
             </div>
             <div className="my-2"></div> {/* Spacer */}
             <div className="flex justify-center items-center gap-x-2 py-3 px-4">
