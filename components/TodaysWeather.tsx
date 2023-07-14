@@ -41,17 +41,17 @@ export default async function TodaysWeather(props: {
     );
 
   return (
-    <div className="flex justify-center mt-20">
+    <div className="flex justify-center">
       <div className="flex flex-col">
         <Image src={`assets/svg/weather/${currentWeather.is_day}_${currentWeather?.condition_code}.svg`} height={100} width={100} alt={"icon"} className={"mx-auto"}/>
 
         <div className="my-2"></div>
 
-        <div className="text-2xl lg:text-5xl font-bold text-center" style={{ color: "#30373E" }}>
+        <div className="text-2xl xl:text-5xl font-bold text-center" style={{ color: "#30373E" }}>
           {currentWeather?.temp_c}°C
         </div>
 
-        <div className="text-lg w-full lg:text-2xl lg:mt-2 text-center font-semibold" style={{ color: "#30373E" }}>
+        <div className="text-lg w-full xl:text-2xl lg:mt-2 text-center font-semibold" style={{ color: "#30373E" }}>
           {currentWeather?.condition}
         </div>
 

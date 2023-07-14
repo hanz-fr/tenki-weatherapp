@@ -15,7 +15,7 @@ const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function FourDaysForecast(props: { forecast: ForecastProps[] }) {
   return (
-    <div className="flex justify-between lg:justify-evenly mt-10">
+    <div className="flex justify-between lg:justify-evenly mt-5">
       {props.forecast
         ?.map((forecast) => (
           <DayForecast

@@ -23,10 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="mx-10 my-5 lg:px-5 lg:mx-auto lg:container">
-          <div className="flex flex-col">
-            <CityContextProvider>{children}</CityContextProvider>
-          </div>
+        <div className="mx-10 lg:px-5 lg:mx-auto lg:container">
+          <CityContextProvider>{children}</CityContextProvider>
         </div>
         <script src="./node_modules/preline/dist/preline.js"></script>
       </body>
