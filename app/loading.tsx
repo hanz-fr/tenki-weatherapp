@@ -3,10 +3,11 @@ import React from "react";
 export default function loading() {
   return (
     <div className="grid place-items-center" style={{ height: "100vh" }}>
-      <div className="w-10 h-10 lg:w-1h-16 lg:h-16" style={{ 
-        animation: "spin 500ms linear infinite"
-       }}>
+      <div className="w-10 h-10 lg:w-1h-16 lg:h-16">
         <svg
+          style={{
+            animation: "spin 500ms linear infinite"
+          }}
           viewBox="0 0 386 386"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
