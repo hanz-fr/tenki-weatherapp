@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-const DayForecast: React.FC<{ day: string; date: string; code: number }> = (
-  props
-) => {
-
+const DayForecast: React.FC<{
+  day: string;
+  date: string;
+  code: number;
+}> = (props) => {
   const date = ("0" + new Date(props.date).getDate()).slice(-2);
   const month = ("0" + (new Date(props.date).getMonth() + 1)).slice(-2);
 
@@ -12,7 +13,7 @@ const DayForecast: React.FC<{ day: string; date: string; code: number }> = (
     <div className="grid grid-cols-1 gap-3 content-between">
       <Image
         className="mx-auto"
-        src={`/assets/svg/weather/day_${props.code}.svg`}
+        src={`/assets/svg/weather/1_${props.code}.svg`}
         alt="weather_sunny"
         width={34}
         height={34}
@@ -22,7 +23,9 @@ const DayForecast: React.FC<{ day: string; date: string; code: number }> = (
           {props.day}
         </div>
 
-        <div className="mx-auto text-sm">{date}/{month}</div>
+        <div className="mx-auto text-sm">
+          {date}/{month}
+        </div>
       </div>
     </div>
   );

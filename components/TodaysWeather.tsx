@@ -11,6 +11,7 @@ interface CurrentWeatherProps {
   condition: string;
   condition_icon: string;
   condition_code: number;
+  is_day: number;
   time: string;
   isLoading: boolean;
   isValidating: boolean;
@@ -42,7 +43,7 @@ export default async function TodaysWeather(props: {
   return (
     <div className="flex justify-center mt-20">
       <div className="flex flex-col">
-        <Image src={`assets/svg/weather/day_${currentWeather?.condition_code}.svg`} height={100} width={100} alt={"icon"} className={"mx-auto"}/>
+        <Image src={`assets/svg/weather/${currentWeather.is_day}_${currentWeather?.condition_code}.svg`} height={100} width={100} alt={"icon"} className={"mx-auto"}/>
 
         <div className="my-2"></div>
 

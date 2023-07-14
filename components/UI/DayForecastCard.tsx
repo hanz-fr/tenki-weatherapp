@@ -49,7 +49,7 @@ export default function DayForecastCard(props: ForecastProps) {
       <div className="flex flex-row xl:px-5">
         <div className="basis-1/3 md:basis-1/4 xl:basis-1/6 flex flex-col">
           <Image
-            src={`/assets/svg/weather/day_${props?.code}.svg`}
+            src={`/assets/svg/weather/1_${props?.code}.svg`}
             width={30}
             height={30}
             alt="chevron"

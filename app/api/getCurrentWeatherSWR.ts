@@ -25,6 +25,7 @@ export function getCurrentWeatherSWR(city: string) {
   const condition = data?.current.condition.text;
   const condition_icon = data?.current.condition.icon;
   const condition_code = data?.current.condition.code;
+  const is_day = data?.current.is_day;
 
   /* Condition Details */
   const pressure_mb = data?.current.pressure_mb;
@@ -48,6 +49,7 @@ export function getCurrentWeatherSWR(city: string) {
     condition,
     condition_icon,
     condition_code,
+    is_day,
     isLoading,
     isValidating,
     error,
