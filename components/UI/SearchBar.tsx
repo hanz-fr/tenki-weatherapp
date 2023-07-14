@@ -12,11 +12,13 @@ export default function SearchBar(props: {
   const [searchValue, setSearchValue] = useState("");
   const [listVisibility, setListVisibility] = useState("hidden");
 
+  
   /* The Cities */
-  const city = City.getAllCities();
+  const city = City.getAllCities(); 
   const filteredCity = city.filter((city) =>
-    city.name.toLowerCase().includes(searchValue.toLowerCase())
+  `${city.name} ${city.countryCode}`.toLowerCase().includes(searchValue.toLowerCase())
   );
+  
 
   /* Handlers */
   const searchHandler = (event: any) => {

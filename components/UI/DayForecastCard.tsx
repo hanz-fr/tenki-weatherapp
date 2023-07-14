@@ -35,8 +35,7 @@ const months = [
 ];
 
 export default function DayForecastCard(props: ForecastProps) {
-  
-    /* Format Date */
+  /* Format Date */
   const dateFormatted = new Date(props.date);
   const date = ("0" + dateFormatted.getDate()).slice(-2);
   const day = weekday[dateFormatted.getDay()];
@@ -52,14 +51,20 @@ export default function DayForecastCard(props: ForecastProps) {
             src={`/assets/svg/weather/1_${props?.code}.svg`}
             width={30}
             height={30}
-            alt="chevron"
+            alt="weather"
             className="mx-auto"
           />
-          <div className="text-[#30373E] font-bold mx-auto text-sm md:text-lg">{props.temp}°C</div>
+          <div className="text-[#30373E] font-bold mx-auto text-sm md:text-lg">
+            {props.temp}°C
+          </div>
         </div>
         <div className="basis-2/3 md:basis-3/4 xl:basis-5/6 flex flex-col my-auto">
-          <div className="text-[#30373E] text-md font-bold">{props.condition}</div>
-          <div className="text-[#30373E] text-sm">{day}, {date} {month} {year}</div>
+          <div className="text-[#30373E] text-sm">
+            {day}, {date} {month} {year}
+          </div>
+          <div className="text-[#30373E] text-md font-bold">
+            {props.condition}
+          </div>
         </div>
       </div>
     </>

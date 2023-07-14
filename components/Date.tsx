@@ -23,7 +23,7 @@ export default function Date(props: { dateTime: DateTimeInterface }) {
       <div className="text-md" style={{ color: "#30373E" }}>
         {props.dateTime.date.day}
       </div>
-      <div className="text-3xl font-semibold" style={{ color: "#30373E" }}>
+      <div className="text-2xl md:text-3xl font-semibold" style={{ color: "#30373E" }}>
         {props.dateTime.date.date} {props.dateTime.date.month}
       </div>
       <div className="text-md" style={{ color: "#30373E" }}>
