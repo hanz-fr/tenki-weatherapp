@@ -23,7 +23,6 @@ export default async function ForecastPage() {
 
   const res = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${latitude},${longitude}&days=11&aqi=no&alerts=no`,
-    { cache: "no-store" }
   );
 
   const weatherData = await res.json();
