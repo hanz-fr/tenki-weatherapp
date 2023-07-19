@@ -21,7 +21,7 @@ export default function Home() {
   */
   const currentWeather = getCurrentWeatherSWR(`${latitude},${longitude}`);
 
-  if (currentWeather.error) return <CityNotFound />;
+  if (currentWeather.error) return <CityNotFound error={currentWeather.error} />;
 
   return (
     <div className="grid grid-cols-1 pt-5 pb-5 2xl:pb-10 content-between h-screen">

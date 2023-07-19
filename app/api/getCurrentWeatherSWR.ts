@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { getCityDateTimeSWR } from "./getCityDateTimeSWR";
 
-const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+const fetcher = (url: string) => axios.get(url).then((res: { data: any; }) => res.data);
 
 export function getCurrentWeatherSWR(city: string) {
   const { data, error, isLoading, isValidating } = useSWR(
