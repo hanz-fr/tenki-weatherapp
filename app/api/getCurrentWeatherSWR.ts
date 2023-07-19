@@ -7,8 +7,9 @@ import { getCityDateTimeSWR } from "./getCityDateTimeSWR";
 const fetcher = (url: string) => axios.get(url).then((res: { data: any; }) => res.data);
 
 export function getCurrentWeatherSWR(city: string) {
+
   const { data, error, isLoading, isValidating } = useSWR(
-    `https://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${city}&days=5&aqi=no&alerts=no`,
+    `https://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${city=="0,0"?"Tokyo":city}&days=5&aqi=no&alerts=no`,
     fetcher,
     { refreshInterval: 600000 }
   );
