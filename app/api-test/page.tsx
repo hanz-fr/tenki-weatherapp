@@ -1,15 +1,73 @@
-"use client";
+import { getCurrentWeatherSWR } from "../api/getCurrentWeatherSWR";
+import { getOpenWeatherData } from "../api/getOpenWeatherData";
 
-import { getCurrentWeatherSWR } from '../api/getCurrentWeatherSWR';
+export default async function page() {
+  const data = await getOpenWeatherData(35.6895, 139.69171);
 
-export default function page() {
+  function timeConverter(UNIX_timestamp: number) {
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
+    var min = a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes();
+    var sec = a.getSeconds() < 10 ? "0" + a.getSeconds() : a.getSeconds();
+    var time =
+      date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+    return time;
+  }
 
-  const data = getCurrentWeatherSWR("Jakarta");
+  const currentDate = new Date().getDate().toString();
 
-  // render data
-  /* if (data.isLoading) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
-  if (data.isValidating) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div> */
-  /* if (data.error) return <div>An error occurred</div> */
+  function fiveDaysOnly(e: string[]) {
+    const uniqueDates = new Set<string>();
 
-  return <div>{ data.name }</div>
+    const filteredArray = e.filter((datetime) => {
+      const datetimeParts = datetime.split(" ");
+      const date = datetimeParts[0];
+      const time = datetimeParts[3];
+      if (!uniqueDates.has(date)) {
+        if (time === "13:00:00" && currentDate != date) {
+          uniqueDates.add(date);
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return Array.from(filteredArray);
+  }
+
+  const timestamp = data.map((e:any) => {
+    return timeConverter(e.dt);
+  })
+
+  const fiveDayWeather = fiveDaysOnly(timestamp);
+  const filteredWeather = data.filter((e:any) => {
+    return e.dt == fiveDayWeather;
+  });
+
+  console.log(filteredWeather);
+
+  return (
+    <div>
+      {fiveDayWeather.map((e:any) => (
+        <div>{e}</div>
+      )).splice(0,4)}
+    </div>
+  );
 }
