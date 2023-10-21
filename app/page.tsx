@@ -45,7 +45,7 @@ export default function Home() {
         <ConditionDetails details={currentWeather.conditionDetails} />
         <div className="my-5"></div>
         <div className="border-t-2" style={{ borderColor: "#30373E" }}></div>
-        <FourDayForecast forecast={currentWeather.forecast} />
+        {/* <FourDayForecast forecast={currentWeather.forecast} /> */}
         <Link
           href={{
             pathname: "/forecast",
