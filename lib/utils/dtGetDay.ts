@@ -1,14 +1,14 @@
 export function dtGetDay(dt: string, threeLetters: boolean) {
-  var days3l = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var days3l = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   var days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
 
   const date = new Date(dt);

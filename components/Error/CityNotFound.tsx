@@ -1,15 +1,8 @@
-import Link from "next/link";
 import ButtonLocation from "../UI/ButtonLocation";
 import Modal from "../UI/Modal";
-import Date from "../Date";
-import Time from "../Time";
-import FourDaysForecast from "../FourDayForecast";
-import FourDayForecast from "../FourDayForecast";
 import Image from "next/image";
 
 export default function CityNotFound(props: { error: any }) {
-
-  console.log(props.error);
 
   return (
     <div className="grid grid-cols-1 content-between h-[100vh]">

@@ -1,5 +1,3 @@
-import { getOpenWeatherData } from "@/app/api/getOpenWeatherData";
-
 import DayForecast from "@/components/UI/DayForecast";
 
 type weatherProps = {
@@ -13,7 +11,7 @@ type weatherProps = {
 };
 
 export default function FourDaysForecast(props: {
-  forecasts: weatherProps[],
+  forecasts: any[] | undefined,
 }) {
   return (
     <div className="flex justify-between lg:justify-evenly mt-5">
@@ -25,8 +23,7 @@ export default function FourDaysForecast(props: {
             day={forecast?.day}
             month={forecast?.month.toString()}
           />
-        ))
-        .slice(1)}
+        ))}
     </div>
   );
 }

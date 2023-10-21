@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 import SearchBar from "./SearchBar";
-import Switch from "./Switch";
 import { useCityContext } from "@/context/CityContext";
 
 export default function Modal() {
