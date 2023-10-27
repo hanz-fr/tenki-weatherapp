@@ -7,18 +7,8 @@ import { dtGetMonth } from "@/lib/utils/dtGetMonth";
 import { getCurrentDate } from "@/lib/utils/getCurrentDate";
 import { unixTimeConverter } from "@/lib/utils/unixTimeConverter";
 
-type weatherProps = {
-  id: number;
-  condition: string;
-  icon: string;
-  date: string;
-  day: string;
-  month: number;
-  time: string;
-};
-
 export async function getOpenWeatherData(lat: string, lon: string) {
-  const API_KEY = process.env.OPEN_WEATHER_KEY;
+  const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_KEY;
 
   const currentDate = getCurrentDate();
 
@@ -48,27 +38,27 @@ export async function getOpenWeatherData(lat: string, lon: string) {
 
       const currentWeatherData = {
         weather: {
-          id: currentWeatherJSON?.weather[0].id,
-          icon: currentWeatherJSON?.weather[0].icon,
+          id: currentWeatherJSON?.weather[0].id as number,
+          icon: currentWeatherJSON?.weather[0].icon as string,
           description: capitalizeWord(
             currentWeatherJSON?.weather[0].description
-          ),
+          ) as string,
         },
         main: {
-          temp: currentWeatherJSON?.main.temp,
-          temp_min: currentWeatherJSON?.main.temp_min,
-          temp_max: currentWeatherJSON?.main.temp_max,
-          pressure: currentWeatherJSON?.main.pressure,
-          humidity: currentWeatherJSON?.main.humidity,
+          temp: currentWeatherJSON?.main.temp.toFixed(1) as number,
+          temp_min: currentWeatherJSON?.main.temp_min as number,
+          temp_max: currentWeatherJSON?.main.temp_max as number,
+          pressure: currentWeatherJSON?.main.pressure as number,
+          humidity: currentWeatherJSON?.main.humidity as number,
         },
         wind: {
-          speed: currentWeatherJSON?.wind.speed,
-          deg: currentWeatherJSON?.wind.deg,
-          gust: currentWeatherJSON?.wind.gust,
+          speed: currentWeatherJSON?.wind.speed as number,
+          deg: currentWeatherJSON?.wind.deg as number,
+          gust: currentWeatherJSON?.wind.gust as number,
         },
-        country: countryCodeToName(currentWeatherJSON?.sys.country),
-        city: currentWeatherJSON?.name,
-        datetime: unixTimeConverter(currentWeatherJSON?.dt),
+        country: countryCodeToName(currentWeatherJSON?.sys.country) as string,
+        city: currentWeatherJSON?.name as string,
+        datetime: unixTimeConverter(currentWeatherJSON?.dt, currentWeatherJSON?.timezone) as any,
       };
 
       const forecastList = await forecastData.list;

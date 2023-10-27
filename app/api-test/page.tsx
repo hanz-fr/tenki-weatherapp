@@ -1,15 +1,44 @@
-import FourDayForecast from "@/components/FourDayForecast";
-import TodaysWeather from "@/components/TodaysWeather";
+"use client";
+import { useEffect } from "react";
+import { useState } from "react";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
-import { getOpenWeatherDataSWR } from "../api/getOpenWeatherDataSWR";
+import { IForecastWeatherData } from "@/interfaces";
+import { ICurrentWeatherData } from "@/interfaces";
 
 export default function page() {
+  const [data, setData] = useState<ICurrentWeatherData>();
+  const [forecasts, setForecasts] = useState<IForecastWeatherData[]>();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const res = getOpenWeatherDataSWR('-6.87222', '107.5425');
-  console.log(res);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const weatherData = await getOpenWeatherData("24.4511", "54.3969");
 
-  return (
-    <>
-    </>
-  );
+        const currentWeather: ICurrentWeatherData =
+          weatherData?.currentWeatherData!;
+        const forecasts: IForecastWeatherData[] =
+          weatherData?.fiveDayForecasts!;
+        setForecasts(forecasts);
+        setData(currentWeather);
+        setLoading(false);
+      } catch (error) {
+        setError(error as any);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (data)
+    return (
+      <>
+        <h1>Weather Data</h1>
+        <div>{JSON.stringify(data)}</div>
+      </>
+    );
 }

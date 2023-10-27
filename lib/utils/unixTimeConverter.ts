@@ -1,7 +1,10 @@
 import { dtGetDay } from "./dtGetDay";
 
-export function unixTimeConverter(UNIX_timestamp: number) {
-  var a = new Date(UNIX_timestamp * 1000);
+export function unixTimeConverter(UNIX_timestamp: number, timezone?: number) {
+  const timezoneOffset = timezone! * 1000;
+
+  var utcDate = new Date(UNIX_timestamp * 1000);
+  var a = new Date(utcDate.getTime() + timezoneOffset);
   var months = [
     "January",
     "February",
@@ -16,19 +19,19 @@ export function unixTimeConverter(UNIX_timestamp: number) {
     "November",
     "December",
   ];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
+  var year = a.getUTCFullYear();
+  var month = months[a.getUTCMonth()];
   var day = dtGetDay(a.toString(), false);
-  var date = a.getDate();
-  var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
-  var min = a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes();
-  var sec = a.getSeconds() < 10 ? "0" + a.getSeconds() : a.getSeconds();
+  var date = a.getUTCDate();
+  var hour = a.getUTCHours() < 10 ? "0" + a.getUTCHours() : a.getUTCHours();
+  var min = a.getUTCMinutes() < 10 ? "0" + a.getUTCMinutes() : a.getUTCMinutes();
+  var sec = a.getUTCSeconds() < 10 ? "0" + a.getUTCSeconds() : a.getUTCSeconds();
 
   return {
     day: day,
     date: date,
     month: month,
     year: year,
-    time: hour + ':' + min,
+    time: `${hour}:${min}`,
   };
 }

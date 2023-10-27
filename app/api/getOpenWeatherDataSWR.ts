@@ -1,3 +1,4 @@
+"use client";
 import { capitalizeWord } from "@/lib/utils/capitalizeWord";
 import { countryCodeToName } from "@/lib/utils/countryCodeToName";
 import { dtGetDay } from "@/lib/utils/dtGetDay";
@@ -11,8 +12,6 @@ import useSWR from "swr";
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-const API_KEY = process.env.OPEN_WEATHER_KEY;
-
 type weatherProps = {
   id: number;
   condition: string;
@@ -24,9 +23,8 @@ type weatherProps = {
 };
 
 export function getOpenWeatherDataSWR(lat: string, lon: string) {
-
   const { data, error } = useSWR(
-    `https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${lat}&lon=${lon}&appid=${API_KEY}`,
+    `http://127.0.0.1:3000/api/openweather?search&lat=${lat}&lon=${lon}`,
     fetcher
   );
 
