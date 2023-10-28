@@ -9,16 +9,6 @@ import { useCityContext } from "@/context/CityContext";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
 
-interface ForecastProps {
-  date: string;
-  day: {
-    avgtemp_c: number;
-    condition: {
-      text: string;
-      code: number;
-    };
-  };
-}
 
 export default async function ForecastPage() {
   let { latitude, longitude } = useCityContext();
@@ -50,7 +40,7 @@ export default async function ForecastPage() {
           <div></div>
         </div>
         <div className="flex flex-col">
-          {forecasts.map((forecast: IForecastWeatherData) => (
+          {forecasts?.map((forecast: IForecastWeatherData) => (
             <DayForecastCard
               temp={forecast?.temp}
               date={forecast?.date}
