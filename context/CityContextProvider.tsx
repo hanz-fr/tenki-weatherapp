@@ -25,8 +25,8 @@ const CityContextProvider = ({ children }: IProps) => {
   return (
     <CityContext.Provider
       value={{
-        latitude: cityLat,
-        longitude: cityLon,
+        latitude: cityLat.toString(),
+        longitude: cityLon.toString(),
         setCityLatitude,
         setCityLongitude,
       }}
