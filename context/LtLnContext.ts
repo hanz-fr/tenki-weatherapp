@@ -12,5 +12,3 @@ export const LtLnContext = createContext<LtLnProps>({
 });
 
 const LtLn = useContext(LtLnContext);
-
-console.log(LtLn);

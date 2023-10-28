@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 
 import SearchBar from "./SearchBar";
-import Switch from "./Switch";
 import { useCityContext } from "@/context/CityContext";
 
 export default function Modal() {
@@ -15,17 +14,15 @@ export default function Modal() {
     latitude: number;
     longitude: number;
   }) => {
-    console.log(city.latitude);
-    console.log(city.longitude);
-    setCityLatInput(city.latitude);
-    setCityLonInput(city.longitude);
+    setCityLatInput(city.latitude as any);
+    setCityLonInput(city.longitude as any);
   };
 
   const submitHandler = (event:any) => {
     event.preventDefault();
 
-    setCityLatitude(cityLatInput);
-    setCityLongitude(cityLonInput);
+    setCityLatitude(cityLatInput as any);
+    setCityLongitude(cityLonInput as any);
   }
 
   const onLatInputChange = (event:any) => {

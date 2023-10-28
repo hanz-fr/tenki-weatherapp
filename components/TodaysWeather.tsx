@@ -2,61 +2,50 @@ import Image from "next/image";
 import React from "react";
 
 interface CurrentWeatherProps {
-  name: string;
-  country: string;
-  latitude: number;
-  longitude: number;
-  temp_f: number;
-  temp_c: number;
-  condition: string;
-  condition_icon: string;
-  condition_code: number;
-  is_day: number;
-  time: string;
-  isLoading: boolean;
-  isValidating: boolean;
-  error: any;
+  weather: {
+    id: number,
+    icon: string,
+    description: string,
+  },
+  main: {
+    temp: number
+    temp_min: number,
+    temp_max: number,
+    pressure: number,
+    humidity: number,
+  },
+  wind: {
+    speed: number,
+    deg: number,
+    gust: number,
+  },
+  country: string,
+  city: string,
 }
 
-export default async function TodaysWeather(props: {
-  currentWeather: CurrentWeatherProps;
+export default function TodaysWeather(props: {
+  currentWeather: CurrentWeatherProps | any;
 }) {
   /* Get current weather */
   const currentWeather = props?.currentWeather;
 
-  if (currentWeather?.isLoading)
-    return (
-      <div className="flex justify-center mt-20">
-        <div className="flex flex-col">
-          <div className="bg-[#C8C8C8] rounded-xl animate-pulse" style={{ width: 140, height: 112 }}></div>
-          <div className="my-1"></div>
-          <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-20 h-8"></div>
-          <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-10 h-4 my-2"></div>
-          <div className="flex gap-1">
-            <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-16 h-4"></div>
-            <div className="bg-[#C8C8C8] rounded-lg animate-pulse w-16 h-4"></div>
-          </div>
-        </div>
-      </div>
-    );
-
   return (
     <div className="flex justify-center">
       <div className="flex flex-col">
-        <Image src={`assets/svg/weather/${currentWeather.is_day}_${currentWeather?.condition_code}.svg`} height={100} width={100} alt={"icon"} className={"mx-auto"}/>
+        <Image src={`assets/svg/openweather/${currentWeather?.weather?.icon}.svg`} height={100} width={100} alt={"icon"} className={"mx-auto"}/>
 
         <div className="my-2"></div>
 
         <div className="text-2xl xl:text-5xl font-bold text-center" style={{ color: "#30373E" }}>
-          {currentWeather?.temp_c}°C
+          {currentWeather?.main?.temp}°C
         </div>
 
         <div className="text-lg w-full xl:text-2xl lg:mt-2 text-center font-semibold" style={{ color: "#30373E" }}>
-          {currentWeather?.condition}
+          {currentWeather?.weather?.description}
         </div>
 
         <div className="text-lg w-full lg:w-full text-center" style={{ color: "#30373E" }}>
-          {currentWeather?.name}, {currentWeather?.country}
+          {currentWeather?.city}, {currentWeather?.country}
         </div>
       </div>
     </div>

@@ -50,9 +50,6 @@ export default function SearchBar(props: {
       latitude: parseFloat(city.latitude),
       longitude: parseFloat(city.longitude),
     });
-    console.log("selected city : " + city.name);
-    console.log("city lat : " + parseFloat(city.latitude));
-    console.log("city lon : " + parseFloat(city.longitude));
     setSearchValue(city.name);
     setListVisibility("hidden");
   };

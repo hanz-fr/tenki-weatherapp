@@ -1,15 +1,46 @@
 "use client";
-
-import { getCurrentWeatherSWR } from '../api/getCurrentWeatherSWR';
+import { useEffect } from "react";
+import { useState } from "react";
+import { getOpenWeatherData } from "../api/getOpenWeatherData";
+import { IForecastWeatherData } from "@/interfaces";
+import { ICurrentWeatherData } from "@/interfaces";
+import { monthConverter } from "@/lib/utils/monthConverter";
 
 export default function page() {
+  const [data, setData] = useState<ICurrentWeatherData>();
+  const [forecasts, setForecasts] = useState<IForecastWeatherData[]>();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const data = getCurrentWeatherSWR("Jakarta");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const weatherData = await getOpenWeatherData("24.4511", "54.3969");
 
-  // render data
-  /* if (data.isLoading) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div>
-  if (data.isValidating) return <div className="rounded-lg w-20 h-5 bg-gray-400 animate-pulse"></div> */
-  /* if (data.error) return <div>An error occurred</div> */
+        const currentWeather: ICurrentWeatherData =
+          weatherData?.currentWeatherData!;
+        const forecasts: IForecastWeatherData[] =
+          weatherData?.fiveDayForecasts!;
+        setForecasts(forecasts);
+        setData(currentWeather);
+        setLoading(false);
+      } catch (error) {
+        setError(error as any);
+        setLoading(false);
+      }
+    };
 
-  return <div>{ data.name }</div>
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (data) {
+    return (
+      <>
+        <h1>Weather Data</h1>
+        <div>{monthConverter(forecasts![0].month)}</div>
+      </>
+    );
+  }
 }

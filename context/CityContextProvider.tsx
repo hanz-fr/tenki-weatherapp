@@ -1,4 +1,5 @@
-import React, { ReactNode, useState } from "react";
+'use client';
+import React, { ReactNode, useEffect, useState } from "react";
 import { CityContext } from "./CityContext";
 
 interface IProps {
@@ -6,6 +7,10 @@ interface IProps {
 }
 
 const CityContextProvider = ({ children }: IProps) => {
+  useEffect(() => {
+    import('preline' as any)
+  }, [])
+
   const [cityLat, setCityLat] = useState(0);
   const [cityLon, setCityLon] = useState(0);
 
