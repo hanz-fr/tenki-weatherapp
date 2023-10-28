@@ -4,26 +4,22 @@ export function RefreshButton(props: { promiseAction: () => Promise<void> }) {
   return (
     <button
       type="button"
-      className="hover:bg-gray-400 active:bg-slate-300 transition-all ease-in-out duration-300 rounded-md"
+      className="p-1 hs-tooltip-toggle hover:bg-gray-400 active:bg-slate-300 transition-all ease-in-out duration-300 rounded-md"
       onClick={() => {
         props.promiseAction();
       }}
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+        width="25"
+        height="25"
+        viewBox="0 0 298 299"
         fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        className="feather feather-refresh-cw"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <polyline points="23 4 23 10 17 10"></polyline>
-        <polyline points="1 20 1 14 7 14"></polyline>
-        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+        <path
+          d="M254.186 43.9761C238.56 28.1752 219.59 16.0937 198.68 8.62384C177.769 1.15392 155.451 -1.5136 133.373 0.818246C64.9495 7.73098 8.64457 63.4065 1.00051 131.973C-9.25371 222.586 60.6614 299 148.848 299C177.002 299 204.579 290.995 228.374 275.914C252.169 260.833 271.205 239.296 283.271 213.805C289.237 201.288 280.288 186.902 266.492 186.902C259.593 186.902 253.068 190.638 250.085 196.804C239.26 220.139 220.746 239.027 197.656 250.29C174.567 261.552 148.311 264.503 123.305 258.645C81.9156 249.49 48.5428 215.674 39.7801 174.197C36.0966 157.798 36.1393 140.779 39.9049 124.399C43.6705 108.019 51.0628 92.6969 61.5349 79.5659C72.007 66.4349 85.291 55.8311 100.404 48.5389C115.518 41.2466 132.074 37.4525 148.848 37.4371C179.797 37.4371 207.39 50.3284 227.526 70.6929L199.373 98.9043C187.627 110.675 195.831 130.852 212.424 130.852H279.356C289.61 130.852 298 122.445 298 112.169V45.0971C298 28.4692 277.864 20.0618 266.119 31.8321L254.186 43.9761Z"
+          fill="#30373E"
+        />
       </svg>
     </button>
   );

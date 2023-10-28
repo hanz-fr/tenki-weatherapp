@@ -1,15 +1,5 @@
 import DayForecast from "@/components/UI/DayForecast";
 
-type weatherProps = {
-  id: number;
-  condition: string;
-  icon: string;
-  date: string;
-  day: string;
-  month: number;
-  time: string;
-};
-
 export default function FourDaysForecast(props: {
   forecasts: any[] | undefined,
 }) {

@@ -1,5 +1,5 @@
 "use client";
-import ButtonLocation from "@/components/UI/ButtonLocation";
+import LocationButton from "@/components/UI/LocationButton";
 import Date from "@/components/Date";
 import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
@@ -7,7 +7,8 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 import CityNotFound from "@/components/Error/CityNotFound";
-import ConditionDetails from "@/components/UI/ConditionDetails";
+import ConditionDetails from "@/components/UI/ConditionDetails"
+;
 import { useEffect } from "react";
 import { useState } from "react";
 import { useCityContext } from "@/context/CityContext";
@@ -63,7 +64,7 @@ export default function Home() {
         <div>
           <div className="flex justify-end gap-5">
             <RefreshButton promiseAction={fetchData} />
-            <ButtonLocation />
+            <LocationButton />
           </div>
           <Modal />
           <div className="my-2"></div>

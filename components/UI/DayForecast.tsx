@@ -19,7 +19,7 @@ const DayForecast: React.FC<{
       />
       <div className="mx-auto text-center">
         <div className="text-lg font-medium" style={{ color: "#30373E" }}>
-          {props.day}
+          {props.day.slice(0,3)}
         </div>
 
         <div className="mx-auto text-sm">

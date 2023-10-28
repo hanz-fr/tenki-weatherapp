@@ -6,6 +6,8 @@ import Link from "next/link";
 import DayForecastCard from "@/components/UI/DayForecastCard";
 
 import { useCityContext } from "@/context/CityContext";
+import { getOpenWeatherData } from "../api/getOpenWeatherData";
+import { IForecastWeatherData } from "@/interfaces";
 
 interface ForecastProps {
   date: string;
@@ -19,14 +21,14 @@ interface ForecastProps {
 }
 
 export default async function ForecastPage() {
-  const { latitude, longitude } = useCityContext();
+  let { latitude, longitude } = useCityContext();
 
-  const res = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=c9e6cb3718574d2293d42758230207&q=${latitude},${longitude}&days=11&aqi=no&alerts=no`,
+  const weatherData = await getOpenWeatherData(
+    latitude.toString(),
+    longitude.toString()
   );
 
-  const weatherData = await res.json();
-  const { forecastday } = weatherData?.forecast;
+  const forecasts: IForecastWeatherData[] = weatherData?.fiveDayForecasts!;
 
   return (
     <div>
@@ -48,16 +50,19 @@ export default async function ForecastPage() {
           <div></div>
         </div>
         <div className="flex flex-col">
-          {forecastday
-            .map((forecast: ForecastProps) => (
-              <DayForecastCard
-                temp={forecast?.day.avgtemp_c}
-                date={forecast?.date}
-                condition={forecast?.day.condition.text}
-                code={forecast?.day.condition.code}
-              />
-            ))
-            .slice(1)}
+          {forecasts.map((forecast: IForecastWeatherData) => (
+            <DayForecastCard
+              temp={forecast?.temp}
+              date={forecast?.date}
+              day={forecast?.day}
+              month={forecast?.month}
+              year={forecast?.year}
+              time={forecast?.time}
+              condition={forecast?.condition}
+              id={forecast?.id}
+              icon={forecast?.icon}
+            />
+          ))}
           <div className="my-10"></div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 export function dtGetMonth(
-  dt: string,
-  isNumber: boolean,
-  isThreeLetters: boolean
+  dt?: string,
+  isNumber?: boolean,
+  isThreeLetters?: boolean
 ) {
-  const month = new Date(dt).getMonth();
+  const month = new Date(dt!).getMonth();
 
   var monthsNumber = [
     "01",

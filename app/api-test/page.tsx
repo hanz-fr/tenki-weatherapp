@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
 import { ICurrentWeatherData } from "@/interfaces";
+import { monthConverter } from "@/lib/utils/monthConverter";
 
 export default function page() {
   const [data, setData] = useState<ICurrentWeatherData>();
@@ -34,11 +35,12 @@ export default function page() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (data)
+  if (data) {
     return (
       <>
         <h1>Weather Data</h1>
-        <div>{JSON.stringify(data)}</div>
+        <div>{monthConverter(forecasts![0].month)}</div>
       </>
     );
+  }
 }

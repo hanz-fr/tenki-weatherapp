@@ -29,9 +29,11 @@ export interface ICurrentWeatherData {
 export interface IForecastWeatherData {
   id: number;
   condition: string;
+  temp: number;
   icon: string;
   date: number;
   day: string;
   month: string;
+  year: number;
   time: string;
 }

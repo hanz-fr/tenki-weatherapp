@@ -4,6 +4,7 @@ import { dtGetDay } from "@/lib/utils/dtGetDay";
 import { dtGetHour2Digit } from "@/lib/utils/dtGetHour";
 import { dtGetMinute } from "@/lib/utils/dtGetMinute";
 import { dtGetMonth } from "@/lib/utils/dtGetMonth";
+import { dtGetYear } from "@/lib/utils/dtGetYear";
 import { getCurrentDate } from "@/lib/utils/getCurrentDate";
 import { unixTimeConverter } from "@/lib/utils/unixTimeConverter";
 
@@ -67,10 +68,12 @@ export async function getOpenWeatherData(lat: string, lon: string) {
         return {
           id: e.weather[0].id,
           condition: e.weather[0].main,
+          temp: e.main.temp,
           icon: e.weather[0].icon,
           date: new Date(e.dt_txt).getDate(),
-          day: dtGetDay(e.dt_txt, true),
-          month: dtGetMonth(e.dt_txt, true, false),
+          day: dtGetDay(e.dt_txt, false),
+          month: dtGetMonth(e.dt_txt, true),
+          year: dtGetYear(e.dt_txt),
           time: `${dtGetHour2Digit(e.dt_txt)}:${dtGetMinute(e.dt_txt)}`,
         };
       });
