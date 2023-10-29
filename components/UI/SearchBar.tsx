@@ -74,6 +74,7 @@ export default function SearchBar(props: {
                 onChange={searchHandler}
                 onKeyDown={inputKeyHandler}
                 value={searchValue}
+                autoFocus={true}
               />
               <div className="pl-2">
                 <svg
