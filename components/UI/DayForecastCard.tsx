@@ -25,7 +25,7 @@ export default function DayForecastCard(props: IForecastWeatherData) {
             className="mx-auto"
           />
           <div className="text-[#30373E] font-bold mx-auto text-sm md:text-lg">
-            {props.temp}°C
+            {props.temp.toFixed(1)}°C
           </div>
         </div>
         <div className="basis-2/3 md:basis-3/4 xl:basis-5/6 flex flex-col my-auto">
