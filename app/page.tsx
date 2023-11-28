@@ -7,8 +7,8 @@ import FourDayForecast from "@/components/FourDayForecast";
 import Modal from "@/components/UI/Modal";
 import Link from "next/link";
 import CityNotFound from "@/components/Error/CityNotFound";
-import ConditionDetails from "@/components/UI/ConditionDetails"
-;
+import ConditionDetails from "@/components/UI/ConditionDetails";
+
 import { useEffect } from "react";
 import { useState } from "react";
 import { useCityContext } from "@/context/CityContext";

@@ -53,7 +53,7 @@ export default function ConditionDetails(props: {
           </div>
         </div>
         <div className="text-center text-[#30373E] font-normal mt-2">
-          {props?.currentWeather?.wind?.speed} kph
+          {props?.currentWeather?.wind?.speed} m/s
         </div>
       </div>
 

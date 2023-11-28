@@ -27,9 +27,17 @@ export interface ICurrentWeatherData {
 }
 
 export interface IForecastWeatherData {
+  index: number;
   id: number;
   condition: string;
   temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  humidity: number;
+  pressure: number;
+  wind_speed: number;
+  wind_deg: number;
   icon: string;
   date: number;
   day: string;

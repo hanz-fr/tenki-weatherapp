@@ -3,14 +3,15 @@ import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import DayForecastCard from "@/components/UI/DayForecastCard";
 
 import { useCityContext } from "@/context/CityContext";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
-
+import ForecastAccordion from "@/components/UI/ForecastAccordion";
+import DayForecastCard from "@/components/UI/DayForecastCard";
 
 export default async function ForecastPage() {
+  
   let { latitude, longitude } = useCityContext();
 
   const weatherData = await getOpenWeatherData(
@@ -40,8 +41,9 @@ export default async function ForecastPage() {
           <div></div>
         </div>
         <div className="flex flex-col">
-          {forecasts?.map((forecast: IForecastWeatherData) => (
-            <DayForecastCard
+          {forecasts?.map((forecast: IForecastWeatherData, index) => (
+            <ForecastAccordion
+              key={index + 1}
               temp={forecast?.temp}
               date={forecast?.date}
               day={forecast?.day}
@@ -51,6 +53,14 @@ export default async function ForecastPage() {
               condition={forecast?.condition}
               id={forecast?.id}
               icon={forecast?.icon}
+              feels_like={forecast?.feels_like}
+              temp_min={forecast?.temp_min}
+              temp_max={forecast?.temp_max}
+              humidity={forecast?.humidity}
+              pressure={forecast?.pressure}
+              wind_speed={forecast?.wind_speed}
+              wind_deg={forecast?.wind_deg}
+              index={index + 1}
             />
           ))}
           <div className="my-10"></div>

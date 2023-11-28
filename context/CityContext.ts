@@ -1,4 +1,3 @@
-import { City } from "@/interfaces";
 import { useContext, createContext } from "react";
 
 interface ICityContext {
