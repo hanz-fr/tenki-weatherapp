@@ -2,6 +2,7 @@ import React from "react";
 
 import Image from "next/image";
 import { windDir } from "@/lib/utils/windDir";
+import { mpsToKph } from "@/lib/utils/mpsToKph";
 
 interface CurrentWeatherProps {
   weather: {
@@ -53,7 +54,7 @@ export default function ConditionDetails(props: {
           </div>
         </div>
         <div className="text-center text-[#30373E] font-normal mt-2">
-          {props?.currentWeather?.wind?.speed} m/s
+          {mpsToKph(props?.currentWeather?.wind?.speed.toFixed(0))} kph  
         </div>
       </div>
 
