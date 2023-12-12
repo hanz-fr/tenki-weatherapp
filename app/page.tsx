@@ -86,6 +86,10 @@ export default function Home() {
           <Link
             href={{
               pathname: "/forecast",
+              query: {
+                lat: latitude == "0" ? "35.6895" : latitude,
+                lon: longitude == "0" ? "139.69171" : longitude,
+              },
             }}
             className="text-[#30373E] hover:text-[#637280] transition-all mt-5 flex justify-center underline underline-offset-1"
           >

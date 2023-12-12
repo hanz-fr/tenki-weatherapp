@@ -1,14 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
 import { ICurrentWeatherData } from "@/interfaces";
 import { monthConverter } from "@/lib/utils/monthConverter";
-import { ForecastAccordion } from "@/components/UI/ForecastAccordion";
-import DayForecastCard from "@/components/UI/DayForecastCard";
+import ForecastAccordion from "@/components/UI/ForecastAccordion";
 
 export default function page() {
   const [data, setData] = useState<ICurrentWeatherData>();

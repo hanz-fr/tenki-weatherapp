@@ -8,10 +8,11 @@ import { useCityContext } from "@/context/CityContext";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
 import ForecastAccordion from "@/components/UI/ForecastAccordion";
-import DayForecastCard from "@/components/UI/DayForecastCard";
 
-export default async function ForecastPage() {
-  
+export default async function ForecastPage({ searchParams }: any) {
+
+  console.log(searchParams.lat);
+
   let { latitude, longitude } = useCityContext();
 
   const weatherData = await getOpenWeatherData(
