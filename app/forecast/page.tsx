@@ -1,18 +1,15 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import ForecastAccordion from "@/components/UI/ForecastAccordion";
 
 import { useCityContext } from "@/context/CityContext";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
 import { IForecastWeatherData } from "@/interfaces";
-import ForecastAccordion from "@/components/UI/ForecastAccordion";
 
-export default async function ForecastPage({ searchParams }: any) {
-
-  console.log(searchParams.lat);
-
+export default async function ForecastPage() {
   let { latitude, longitude } = useCityContext();
 
   const weatherData = await getOpenWeatherData(
