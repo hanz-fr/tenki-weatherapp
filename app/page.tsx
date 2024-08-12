@@ -38,6 +38,7 @@ export default function Home() {
         latitude.toString(),
         longitude.toString()
       );
+
       const currentWeather: ICurrentWeatherData =
         weatherData?.currentWeatherData!;
       const forecasts: IForecastWeatherData[] = weatherData?.fiveDayForecasts!;

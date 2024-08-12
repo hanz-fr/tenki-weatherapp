@@ -18,9 +18,7 @@ export default function Modal() {
     setCityLonInput(city.longitude as any);
   };
 
-  const submitHandler = (event:any) => {
-    event.preventDefault();
-
+  const submitHandler = () => {
     setCityLatitude(cityLatInput as any);
     setCityLongitude(cityLonInput as any);
   }
@@ -90,7 +88,7 @@ export default function Modal() {
             <div className="flex justify-center items-center gap-x-2 py-3 px-4">
               <button
                 type="submit"
-                className="hs-dropdown-toggle py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
+                className="py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
                 data-hs-overlay="#hs-vertically-centered-modal"
               >
                 Save Changes
