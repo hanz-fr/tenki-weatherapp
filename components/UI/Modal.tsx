@@ -1,6 +1,6 @@
 "use client";
 
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 import SearchBar from "./SearchBar";
 import { useCityContext } from "@/context/CityContext";

@@ -67,7 +67,7 @@ export default function SearchBar(props: {
           <div className="bg-white shadow-md rounded-lg px-3 py-2">
             <div className="flex items-center">
               <input
-                className="w-full rounded-md text-gray-700 leading-tight focus:outline-none text-sm md:text-base py-1 px-2"
+                className="w-full border-none rounded-md text-gray-700 leading-tight focus:ring-0 text-sm md:text-base py-1 px-2"
                 id="search"
                 type="text"
                 placeholder="Search cities..."

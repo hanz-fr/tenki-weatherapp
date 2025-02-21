@@ -16,6 +16,7 @@ import { Loading } from "@/components/UI/Loading";
 import { ICurrentWeatherData, IForecastWeatherData } from "@/interfaces";
 import { getOpenWeatherData } from "./api/getOpenWeatherData";
 import { RefreshButton } from "@/components/UI/RefreshButton";
+import { FbModal } from "@/components/UI/FbModal";
 
 export default function Home() {
   /* 
@@ -66,6 +67,7 @@ export default function Home() {
           <div className="flex justify-end gap-5">
             <RefreshButton promiseAction={fetchData} />
             <LocationButton />
+            <FbModal/>
           </div>
           <Modal />
           <div className="my-2"></div>
