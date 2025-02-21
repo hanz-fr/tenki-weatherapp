@@ -66,7 +66,7 @@ export default function Home() {
         <div>
           <div className="flex justify-end gap-5">
             <RefreshButton promiseAction={fetchData} />
-            <LocationButton />
+            {/* <LocationButton /> */}
             <FbModal/>
           </div>
           <Modal />
