@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import { useCityContext } from "@/context/CityContext";
 
 export function FbModal() {
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const { latitude, longitude, setCityLatitude, setCityLongitude } =
     useCityContext();
   const [cityLatInput, setCityLatInput] = useState(latitude);
@@ -21,9 +21,11 @@ export function FbModal() {
     setCityLonInput(city.longitude as any);
   };
 
-  const submitHandler = () => {
-    setCityLatInput(cityLatInput as any);
-    setCityLonInput(cityLonInput as any);
+  const submitHandler = (event: any) => {
+    setCityLatitude(cityLatInput as any);
+    setCityLongitude(cityLonInput as any);
+
+    setOpenModal(false);
   };
 
   const onLatInputChange = (event: any) => {
@@ -36,7 +38,11 @@ export function FbModal() {
 
   return (
     <>
-      <Button color="gray" onClick={() => setOpenModal(true)}>
+      <Button
+        color="gray"
+        className="bg-transparent border-none p-0 w-5"
+        onClick={() => setOpenModal(true)}
+      >
         <svg
           width="30"
           height="30"
@@ -59,8 +65,9 @@ export function FbModal() {
         </svg>
       </Button>
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
+        <Modal.Header />
+        <SearchBar onValueChange={onSearchValueChange} />
         <Modal.Body>
-          <SearchBar onValueChange={onSearchValueChange} />
           <div className="flex flex-col gap-7 p-5 overflow-y-auto">
             <div className="flex justify-between">
               <p className="text-[#30373E] text-sm md:text-base">Latitude</p>
@@ -85,13 +92,13 @@ export function FbModal() {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
+          <button
             className="py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
-            onClick={() => setOpenModal(false)}
-            type="submit"
+            onClick={submitHandler}
+            type="button"
           >
             Save Changes
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>
