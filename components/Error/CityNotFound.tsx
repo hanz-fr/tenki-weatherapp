@@ -1,5 +1,5 @@
+import { FbModal } from "../UI/FbModal";
 import LocationButton from "../UI/LocationButton";
-import Modal from "../UI/Modal";
 import Image from "next/image";
 
 export default function CityNotFound(props: { error: any }) {
@@ -7,9 +7,8 @@ export default function CityNotFound(props: { error: any }) {
   return (
     <div className="grid grid-cols-1 content-between h-[100vh]">
       {/* Upper Layout */}
-      <div className="mt-5">
-        <LocationButton />
-        <Modal />
+      <div className="mt-5 flex justify-end">
+        <FbModal />
       </div>
       {/* Middle Layout */}
       <div className="flex justify-center">
