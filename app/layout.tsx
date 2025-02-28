@@ -26,7 +26,6 @@ export default function RootLayout({
         <div className="mx-10 lg:px-5 lg:mx-auto lg:container">
           <CityContextProvider>{children}</CityContextProvider>
         </div>
-        <script src="./node_modules/preline/dist/preline.js"></script>
       </body>
     </html>
   );

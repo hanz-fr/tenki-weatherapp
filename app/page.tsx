@@ -1,5 +1,4 @@
 "use client";
-import LocationButton from "@/components/UI/LocationButton";
 import Date from "@/components/Date";
 import Time from "@/components/Time";
 import TodaysWeather from "@/components/TodaysWeather";
