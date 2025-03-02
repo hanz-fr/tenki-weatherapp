@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import ForecastAccordion from "@/components/UI/ForecastAccordion";
+import FbForecastAccordion from "@/components/UI/FbForecastAccordion";
 
 import { useCityContext } from "@/context/CityContext";
 import { getOpenWeatherData } from "../api/getOpenWeatherData";
@@ -40,7 +40,7 @@ export default async function ForecastPage() {
         </div>
         <div className="flex flex-col">
           {forecasts?.map((forecast: IForecastWeatherData, index) => (
-            <ForecastAccordion
+            <FbForecastAccordion
               key={index + 1}
               temp={forecast?.temp}
               date={forecast?.date}
