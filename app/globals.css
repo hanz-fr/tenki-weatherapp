@@ -4,11 +4,10 @@
 
 body {
   background-color: #dddddd;
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+}
+
+@layer components {
+  .accordion-closed {
+    @apply 
+  }
 }
