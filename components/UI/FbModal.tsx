@@ -65,9 +65,9 @@ export function FbModal() {
         </svg>
       </Button>
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header />
+        <Modal.Header className="bg-white" />
         <SearchBar onValueChange={onSearchValueChange} />
-        <Modal.Body>
+        <Modal.Body className="bg-white">
           <div className="flex flex-col gap-7 p-5 overflow-y-auto">
             <div className="flex justify-between">
               <p className="text-[#30373E] text-sm md:text-base">Latitude</p>
@@ -91,7 +91,7 @@ export function FbModal() {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="bg-white">
           <button
             className="py-2 px-4 w-full inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-[#30373E] text-white shadow-sm align-middle hover:bg-[#23282e] focus:outline-none transition-all text-sm"
             onClick={submitHandler}

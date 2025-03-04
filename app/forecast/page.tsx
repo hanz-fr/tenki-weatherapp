@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +13,8 @@ export default async function ForecastPage() {
   let { latitude, longitude } = useCityContext();
 
   const weatherData = await getOpenWeatherData(
-    latitude.toString(),
-    longitude.toString()
+    latitude?.toString(),
+    longitude?.toString()
   );
 
   const forecasts: IForecastWeatherData[] = weatherData?.fiveDayForecasts!;
