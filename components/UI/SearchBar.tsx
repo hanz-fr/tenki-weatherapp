@@ -61,7 +61,7 @@ export default function SearchBar(props: {
   };
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto">
+    <div className="w-full max-w-screen-xl mx-auto bg-white">
       <div className="flex justify-center py-2 px-3">
         <div className="w-full max-w-md relative">
           <div className="bg-white shadow-md rounded-lg px-3 py-2">
