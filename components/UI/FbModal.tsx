@@ -38,9 +38,10 @@ export function FbModal() {
 
   return (
     <>
-      <Button
-        color="gray"
-        className="bg-transparent border-none p-0 w-5"
+      <button
+        type="button"
+        color="default"
+        className="p-1 hs-tooltip-toggle hover:bg-gray-400 active:bg-slate-300 transition-all ease-in-out duration-300 rounded-md"
         onClick={() => setOpenModal(true)}
       >
         <svg
@@ -63,7 +64,7 @@ export function FbModal() {
             stroke-linecap="round"
           />
         </svg>
-      </Button>
+      </button>
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header className="bg-white" />
         <SearchBar onValueChange={onSearchValueChange} />

@@ -63,7 +63,7 @@ export default function Home() {
       <div className="grid grid-cols-1 pt-5 pb-5 2xl:pb-10 content-between h-screen">
         {/* upper layout */}
         <div>
-          <div className="flex justify-end gap-5">
+          <div className="flex justify-end gap-4">
             <RefreshButton promiseAction={fetchData} />
             {/* <LocationButton /> */}
             <FbModal/>
